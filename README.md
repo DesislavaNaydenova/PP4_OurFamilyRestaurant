@@ -1,6 +1,8 @@
-# PROJECT NAME TO GO HERE
+# Our Family Restaurant
 
-👩🏻‍💻 View an example of this section [here](https://github.com/kera-cudmore/Bully-Book-Club#bully-book-club-website)
+Our Family Restaurant website is designed to be fully responsive, providing an optimal viewing experience on a wide range of devices. Visitors can explore our charming hut nestled in the heart of the Alps, with high-quality images showcasing the restaurant, our delicious meals, and the stunning natural surroundings. The website features an easy-to-navigate menu overview and offers the convenience of making online reservations. Additionally, visitors can find our location and contact details to plan their visit with ease.
+
+"👩🏻‍💻 View an example of this section [here](https://github.com/kera-cudmore/Bully-Book-Club#bully-book-club-website)"
 
 Add a Blurb about the site here, what does it do, why did you build it?
 
@@ -50,11 +52,18 @@ If you want to add optional [shields.io](https://shields.io) badges to your READ
 
 ## User Experience (UX)
 
-👩🏻‍💻 View an example of a completed user experience section [here](https://github.com/kera-cudmore/Bully-Book-Club#user-experience-ux)
+The user experience on the finished restaurant website should be intuitive, engaging, and efficient. Here’s a breakdown of what the experience should look like for both visitors (guests) and registered users, as well as the admin:
+
+* General User Experience
+  * Intuitive Navigation: The website should be easy to navigate, with a clear and simple menu bar or navigation system that allows users to quickly find what they need (e.g., menu, reservations, location).
+  * Responsive Design: The site should be fully responsive, ensuring a seamless experience on desktops, tablets, and mobile devices.
+  * Visual Appeal: The design should be visually appealing, reflecting the restaurant's brand and atmosphere. High-quality images of the restaurant and its dishes should be prominently featured.
+  * Performance: The website should load quickly, with minimal latency, to keep users engaged.
+  * Accessibility: The website should be accessible to all users, including those with disabilities, by following best practices like alt text for images, keyboard navigation, and screen reader compatibility.
 
 ### User Stories
 
-Add your user stories here. You want to include first time visitors and returning visitors here as a minimum. Think about each group, and the experience and journey you want them to have on your site. It really helps to think about this before you start coding, and will really help with creating your wireframes.
+See our [GitHub User Stories](https://github.com/users/DesislavaNaydenova/projects/4/views/4)
 
 ## Design
 
@@ -164,6 +173,8 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 
 ## Credits
 
+- For the structure of the README.md file [GitHub: Kera Cudmore](https://github.com/kera-cudmore/readme-examples/blob/main/milestone1-readme.md)
+
 👩🏻‍💻 View an example of a completed Credits section [here](https://github.com/kera-cudmore/BookWorm#Credits)
 
 The Credits section is where you can credit all the people and sources you used throughout your project.
@@ -174,11 +185,11 @@ If you have used some code in your project that you didn't write, this is the pl
 
 ### Content
 
-Who wrote the content for the website? Was it yourself - or have you made the site for someone and they specified what the site was to say? This is the best place to put this information.
+- The content for this website, including images and descriptions, is based on the original [Heisthof webpage](https://www.heisthof.net/). We have used this content with the full understanding and permission of the owner. We sincerely appreciate their support and collaboration in bringing this project to life.
 
 ###  Media
 
-If you have used any media on your site (images, audio, video etc) you can credit them here. I like to link back to the source where I found the media, and include where on the site the image is used.
+- The images and media used on this website are inspired by the original [Heisthof webpage](https://www.heisthof.net/). We have obtained permission from the owner to use and adapt this content. We extend our gratitude to the Heisthof team for allowing us to showcase their beautiful visuals and atmosphere through our website.
   
 ###  Acknowledgments
 
