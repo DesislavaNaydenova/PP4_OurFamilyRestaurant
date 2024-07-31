@@ -16,6 +16,12 @@ import dj_database_url
 if os.path.isfile('env.py'):
     import env
 
+# Trusted origins:
+CSRF_TRUSTED_ORIGINS = [
+    'https://*.gitpod.io',
+    'https://*.herokuapp.com',
+]
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
