@@ -145,15 +145,123 @@ A great tip for this section is to include them as you use them, that way you wo
 
 ## Deployment & Local Development
 
-👩🏻‍💻 View an example of a completed Deployment & Local Development section [here](https://github.com/kera-cudmore/TheQuizArms#Deployment)
+### Deployment to Heroku
 
-### Deployment
+#### Create the Heroku app
+1. Navigate to your Heroku dashboard and create a new app with a unique name.
 
-Include instructions here on how to deploy your project. For your first project you will most likely be using GitHub Pages.
+2. Click on the Settings tab and reveal the config vars. Add a key of DISABLE_COLLECTSTATIC and a value of 1 and click Add.
+
+#### Update your code for deployment
+3. Install a production-ready webserver for Heroku.
+
+pip3 install gunicorn~=20.1 
+Add gunicorn==20.1.0 to the requirements.txt file with:
+
+pip3 freeze --local > requirements.txt
+Note: gunicorn is a production equivalent of the manage.py runserver used in development but with speed and security optimisation.
+
+4. Create a file named Procfile at the root directory of the project (same directory as requirements.txt).
+
+Note: The Procfile has no file extension.
+
+5. In the Procfile, declare this is a web process followed by the command to execute your Django project.
+
+web: gunicorn my_project.wsgi
+This assumes your project is named my_project.
+
+Note the space after the colon.
+
+Note: gunicorn my_project.wsgi is the command heroku will use to start the server. It works similarly to python3 manage.py runserver.
+
+6. Open the my_project/settings.py file and replace DEBUG=True with DEBUG=False.
+
+Note the comment regarding security in production.
+
+7. Also, in settings.py we need to append the Heroku hostname to the ALLOWED_HOSTS list, in addition to the local host we added in the last lesson.
+
+,'.herokuapp.com'
+Note: Remember the comma and the dot before herokuapp.
+
+8. You can now git add the files you have modified, git commit them and push them to GitHub.
+
+#### Deploy on Heroku
+9. Now, let's return to the Heroku dashboard, and in your app, click on the Deploy tab.
+
+10. In the Deployment method section enable GitHub integration by clicking on Connect to GitHub.
+
+If you have not deployed a project from GitHub before then, you will be asked to authenticate with GitHub.
+
+11. Start typing your project repo name into the search box and click Search. A list of repositories from your GitHub account should appear. Click on the GitHub repo you want to deploy from.
+
+12. Scroll to the bottom of the page and click Deploy Branch to start a manual deployment of the main branch.
+
+You can view the build output in the application's Activity tab in the dashboard.
+
+13. Click on Open app to view your deployed project.
+
+Note: You will have to append /hello to the browser URL just as you did locally to see your view output.
+
+14. Open the Resources tab and choose an eco dyno. This dyno is a lightweight container to run your project.
+
+15. Open the Resources tab and verify there is no existing Postgres database add-on. If there is one you can destroy it. Hello, World does not use a database and if not destroyed can result in usage costs. If there is a database add-on select Delete Add-on to remove it.
+
+16. Click on Open app to view your deployed project.
+
+Note: You will have to append /hello to the browser URL just as you did locally to see your view output.
 
 ### Local Development
 
-The local development section gives instructions on how someone else could make a copy of your project to play with on their local machine. This section will get more complex in the later projects, and can be a great reference to yourself if you forget how to do this.
+Follow these steps to set up and run the project on your local machine.
+
+#### Prerequisites
+Ensure you have the following software installed on your machine:
+- Git: Version control system to clone the repository.
+- Node.js and npm: JavaScript runtime and package manager (or any other language/runtime specific to your project).
+- Database: If your project requires a database, ensure the appropriate database server is installed and running (e.g., MySQL, PostgreSQL, MongoDB).
+
+#### Step-by-Step Instructions
+1. Clone the repository
+Open your terminal and run the following command to clone the repository:
+bash
+git clone https://github.com/your-username/your-project.git
+
+Replace https://github.com/your-username/your-project.git with the actual URL of your repository.
+2. Navigate to the project directory
+Change into the project directory:
+bash
+cd your-project
+
+3. Install dependencies
+Run the following command to install the necessary dependencies:
+bash
+npm install
+
+If your project uses another package manager like Yarn, use:
+bash
+yarn install
+
+4. Set up environment variables
+Create a .env file in the root directory of the project and add the necessary environment variables. You can use the provided .env.example as a reference:
+bash
+cp .env.example .env
+
+Edit the .env file to include your specific configuration values.
+5. Set up the database
+If your project requires a database, set it up by running the migration and seed scripts. For example, if you're using a Node.js project with Sequelize:
+bash
+npx sequelize-cli db:migrate
+npx sequelize-cli db:seed:all
+
+Adjust the commands according to the ORM or database tool your project uses.
+Run the development server
+6. Start the development server with the following command:
+bash
+npm start
+
+Or, if your project uses a different command, replace npm start with the appropriate command.
+7. Access the application
+Open your web browser and navigate to http://localhost:3000 (or the port specified in your project) to view the running application.
 
 #### How to Fork
 
@@ -173,7 +281,10 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 
 ## Credits
 
-- For the structure of the README.md file [GitHub: Kera Cudmore](https://github.com/kera-cudmore/readme-examples/blob/main/milestone1-readme.md)
+- For the structure of the README.md file: [GitHub: Kera Cudmore](https://github.com/kera-cudmore/readme-examples/blob/main/milestone1-readme.md)
+- For the basic information and guidance: [CodeInstitute](https://learn.codeinstitute.net/)
+- For correcting typos and helping by solving small issues: [ChatGPT](https://chatgpt.com/)
+
 
 👩🏻‍💻 View an example of a completed Credits section [here](https://github.com/kera-cudmore/BookWorm#Credits)
 
