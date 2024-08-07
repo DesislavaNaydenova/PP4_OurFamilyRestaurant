@@ -95,13 +95,11 @@ Use this section to explain what sort of imagery you plan to use through your si
 
 Wireframes were created for mobile, tablet and desktop using balsamiq.
 
-[Mobile View](assets/images/mobile_view.pdf)
+![Mobile View](assets/images/mobile_view.jpg)
 
-[Tablet View](assets/images/tablet_view.pdf)
+![Tablet View](assets/images/tablet_view.jpg)
 
-[Desktop View](assets/images/desktop_view.pdf)
-
-
+![Desktop View](assets/images/desktop_view.jpg)
 
 ## Features
 
