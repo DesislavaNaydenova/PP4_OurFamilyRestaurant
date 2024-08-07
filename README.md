@@ -30,6 +30,9 @@ If you want to add optional [shields.io](https://shields.io) badges to your READ
   * [Future Implementations](#future-implementations)
   * [Accessibility](#accessibility)
 
+* [Database Schema](#database-schema)
+  * [Entity-Relationship Diagram](#entity-relationship-diagram)
+
 * [Technologies Used](#technologies-used)
   * [Languages Used](#languages-used)
   * [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
@@ -128,6 +131,21 @@ Have you ensured your site meets the minimum contrast requirements?
 Have you chosen fonts that are dyslexia/accessible friendly?
 
 Code Institute have an amazing channel for all things accessibility (a11y-accessibility) I would highly recommend joining this channel as it contains a wealth of information about accessibility and what we can do as developers to be more inclusive.
+
+## Database Schema
+
+### Entity-Relationship Diagram
+Below is the Entity-Relationship Diagram representing the database structure of the project.
+![ERD](assets/images/ERD.jpg)
+
+- **Admin:** The Admin table stores information about the administrative users who can manage the site.
+- **Users:** The Users table stores data for registered users.
+- **Reservations:** The Reservations table stores data for reservations made from registered and not registered(guests) users.
+- **Tables:** The Tables table ceeps track of all the tables available in the restaurant , with capacity and current status.
+- **OpeningHours:** The OpeningHours table defines the opening an closing times for each day of the week.
+
+
+
 
 ## Technologies Used
 
