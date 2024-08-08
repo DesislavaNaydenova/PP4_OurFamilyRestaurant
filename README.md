@@ -157,11 +157,19 @@ Make a note here of all the languages used in creating your project. For the fir
 
 ### Frameworks, Libraries & Programs Used
 
-Add any frameworks, libraries or programs used while creating your project.
+- [DBDiagram](https://dbdiagram.io/) for the ERD.
 
-Make sure to include things like git, GitHub, the program used to make your wireframes, any programs used to compress your images, did you use a CSS framework like Bootstrap? If so add it here (add the version used).
+- [Balasamiq](https://balsamiq.com/) used to create wireframes.
 
-A great tip for this section is to include them as you use them, that way you won't forget what you ended up using when you get to the end of your project.
+- [Github](https://github.com/) saves and stores the files for the website.
+
+- [GitPod](https://gitpod.io/) IDE used to create the site.
+
+- [Am I Responsive?](https://amiresponsive.co.uk/) shows the website image on a range of devices.
+
+- [StartBootstrap](https://startbootstrap.com/) for Bootstrap themes.
+
+- [Hewroku](https://id.heroku.com/) fot developing the project.
 
 ## Deployment & Local Development
 
