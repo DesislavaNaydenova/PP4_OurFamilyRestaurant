@@ -14,3 +14,6 @@ class Menu(models.Model):
         ('maindishes', 'Main dishes'),
         ('deserts', 'Deserts'),
     ])
+
+    def __str__(self):
+        return self.name

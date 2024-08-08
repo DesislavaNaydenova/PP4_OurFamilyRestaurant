@@ -159,9 +159,9 @@ Make a note here of all the languages used in creating your project. For the fir
 
 - [DBDiagram](https://dbdiagram.io/) for the ERD.
 
-- [Balasamiq](https://balsamiq.com/) used to create wireframes.
+- [Balsamiq](https://balsamiq.com/) used to create wireframes.
 
-- [Github](https://github.com/) saves and stores the files for the website.
+- [GitHub](https://github.com/) saves and stores the files for the website.
 
 - [GitPod](https://gitpod.io/) IDE used to create the site.
 
@@ -169,7 +169,7 @@ Make a note here of all the languages used in creating your project. For the fir
 
 - [StartBootstrap](https://startbootstrap.com/) for Bootstrap themes.
 
-- [Hewroku](https://id.heroku.com/) fot developing the project.
+- [Heroku](https://id.heroku.com/) fot developing the project.
 
 ## Deployment & Local Development
 
