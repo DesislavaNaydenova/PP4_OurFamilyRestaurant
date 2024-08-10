@@ -21,4 +21,5 @@ from hello_alps import views as index_views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("hello_alps.urls"), name="hello_alps-urls"),
+    path('summernote/', include('django_summernote.urls')),
 ]
