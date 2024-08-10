@@ -9,4 +9,4 @@ from .models import Menu
 
 class MenuList(generic.ListView):
     queryset = Menu.objects.all()
-    template_name = "menu_list.html"
+    template_name = "index.html"
