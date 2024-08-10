@@ -10672,7 +10672,7 @@ header.masthead {
   margin-bottom: 3rem;
   padding-top: calc(8rem + 57px);
   padding-bottom: 8rem;
-  background: url('static/images/background-img.png') no-repeat center center;
+  background: url('/staticfiles/images/background-img.png') no-repeat center center;
   background-color: #6c757d;
   background-size: cover;
   background-attachment: scroll;
