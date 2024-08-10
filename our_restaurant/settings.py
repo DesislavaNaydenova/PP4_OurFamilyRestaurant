@@ -25,6 +25,7 @@ CSRF_TRUSTED_ORIGINS = [
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
 # Quick-start development settings - unsuitable for production
@@ -34,7 +35,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-0nia25fax0r5kx^=l4lvg%^$98^mz2x2t0!_l^=22d27r*9%t6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['8000-desislavana-pp4ourfamil-u5mrbd5gf6j.ws-eu115.gitpod.io',
 '.herokuapp.com']

@@ -7,6 +7,11 @@ from .models import Menu
 
 # Create your views here.
 
+# Homepage view
+def index(request):
+    return render(request, 'hello_alps/index.html')
+
+# Menu List View
 class MenuList(generic.ListView):
     queryset = Menu.objects.all()
-    template_name = "index.html"
+    template_name = "hello_alps/templates/hello_alps/menu_list.html"
