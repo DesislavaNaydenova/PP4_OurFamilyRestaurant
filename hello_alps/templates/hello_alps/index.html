@@ -26,10 +26,10 @@
             <!-- Opening Hours Section -->
             <div class="opening-hours mt-5">
                 <h3 class="text-center">Opening Hours</h3>
-                <ul class="list-unstyled text-center">
+                <ul class="list-unstyled opening-hours-list" style="padding-left: 30%;">
                     {% for time in opening_hours %}
                     <li>
-                        <strong>{{ time.day_of_week }}:</strong> {{ time.open_hour }} : {{ time.close_hour }}
+                        <strong>{{ time.day_of_week }}:</strong> {{ time.open_time|date:"H:i" }} : {{ time.close_time|date:"H:i" }}
                     </li>
                     {% endfor %}
                 </ul>
