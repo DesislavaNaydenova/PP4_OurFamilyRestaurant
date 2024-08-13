@@ -20,6 +20,7 @@ if os.path.isfile('env.py'):
 CSRF_TRUSTED_ORIGINS = [
     'https://*.gitpod.io',
     'https://*.herokuapp.com',
+    'https://8000-desislavana-pp4ourfamil-48q6cuji0sv.ws.codeinstitute-ide.net',
 ]
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
