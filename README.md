@@ -45,6 +45,10 @@ If you want to add optional [shields.io](https://shields.io) badges to your READ
 
 * [Testing](#testing)
 
+* [Bugs](#bugs)
+  * [Fixed Bugs](#fixed-bugs)
+  * [Unfixed Bugs](#unfixed-bugs)
+
 * [Credits](#credits)
   * [Code Used](#code-used)
   * [Content](#content)
@@ -306,6 +310,15 @@ Start as you mean to go on - and get used to writing a TESTING.md file from the 
 Testing requirements aren't massive for your first project, however if you start using a TESTING.md file from your first project you will thank yourself later when completing your later projects, which will contain much more information.
   
 Use this part of the README to link to your TESTING.md file - you can view the example TESTING.md file [here](milestone1-testing.md)
+
+## Bugs
+
+### Fixed Bugs
+
+### Unfixed Bugs
+
+- When adding a menu item the input is displayed as HTML
+![Input as HTML](assets/images/summernote_bug.png)
 
 ## Credits
 
