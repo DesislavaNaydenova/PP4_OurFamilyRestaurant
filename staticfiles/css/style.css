@@ -558,8 +558,13 @@ progress {
 }
 
 .list-unstyled {
-  padding-left: 0;
+  padding-left: 30%;
   list-style: none;
+}
+@media (max-width: 450px) {
+  .list-unstyled {
+    padding-left: 10%;
+  }
 }
 
 .list-inline {
@@ -10663,8 +10668,8 @@ blockquote {
 }
 
 footer {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 header.masthead {
@@ -10672,7 +10677,7 @@ header.masthead {
   margin-bottom: 3rem;
   padding-top: calc(8rem + 57px);
   padding-bottom: 8rem;
-  background: url('staticfiles/images/background-img.png') no-repeat center center;
+  background: url("staticfiles/images/background-img.png") no-repeat center center;
   background-color: #6c757d;
   background-size: cover;
   background-attachment: scroll;
@@ -10803,3 +10808,5 @@ header.masthead .post-heading .meta a {
   display: inline-block;
   margin: 0 auto;
 }
+
+

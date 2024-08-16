@@ -26,7 +26,7 @@
             <!-- Opening Hours Section -->
             <div class="opening-hours mt-5">
                 <h3 class="text-center">Opening Hours</h3>
-                <ul class="list-unstyled opening-hours-list" style="padding-left: 30%;">
+                <ul class="list-unstyled opening-hours-list">
                     {% for time in opening_hours %}
                     <li>
                         <strong>{{ time.day_of_week }}:</strong> {{ time.open_time|date:"H:i" }} : {{ time.close_time|date:"H:i" }}

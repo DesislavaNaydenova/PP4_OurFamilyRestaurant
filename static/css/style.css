@@ -557,6 +557,16 @@ progress {
   }
 }
 
+.opening-hours {
+  text-align: center;
+}
+
+.opening-hours-list {
+  text-align: left;
+  display: inline-block;
+  margin: 0 auto;
+}
+
 .list-unstyled {
   padding-left: 0;
   list-style: none;
