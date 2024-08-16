@@ -14,8 +14,14 @@ def index(request):
 
 # Menu List View
 class MenuList(generic.ListView):
-    queryset = Menu.objects.all()
+    context_object_name = "sort_menu_items"
     template_name = "hello_alps/menu_list.html"
+
+    def get_queryset(self):
+        categories = Menu.objects.values_list('categories', flat=True).distinct()
+        sort_menu_items = {category: Menu.objects.filter(categories=category) for category in categories}
+        return sort_menu_items
+
 
 # Added to index
 # Opening Hours View
