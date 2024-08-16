@@ -11,14 +11,14 @@ from .models import Menu, OpeningHour
 def index(request):
     opening_hours = OpeningHour.objects.all()
     return render(request, 'hello_alps/index.html', {'opening_hours': opening_hours})
-    #return render(request, 'hello_alps/index.html')
 
 # Menu List View
 class MenuList(generic.ListView):
     queryset = Menu.objects.all()
     template_name = "hello_alps/menu_list.html"
 
+# Added to index
 # Opening Hours View
 #def OpeningHours(request):
 #    opening_hours = OpeningHour.objects.all()
-  #  return render(request, 'hello_alps/index.html', {'opening_hours': opening_hours})
+#  return render(request, 'hello_alps/index.html', {'opening_hours': opening_hours})
