@@ -12,7 +12,8 @@ class Menu(models.Model):
     categories = models.CharField(max_length=50, choices=[
         ('starters', 'Starters'),
         ('maindishes', 'Main dishes'),
-        ('deserts', 'Deserts'),
+        ('pizza', 'Pizza'),
+        ('desserts', 'Desserts'),
     ])
 
     def __str__(self):

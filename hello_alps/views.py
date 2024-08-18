@@ -18,8 +18,8 @@ class MenuList(generic.ListView):
     template_name = "hello_alps/menu_list.html"
 
     def get_queryset(self):
-        categories = Menu.objects.values_list('categories', flat=True).distinct()
-        sort_menu_items = {category: Menu.objects.filter(categories=category) for category in categories}
+        ordered_categories = ["starters", "maindishes", "pizza", "desserts"]
+        sort_menu_items = {category: Menu.objects.filter(categories=category) for category in ordered_categories}
         return sort_menu_items
 
 
