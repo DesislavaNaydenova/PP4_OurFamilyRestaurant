@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Menu, OpeningHour
+from .models import Menu, OpeningHour, Table
 from django_summernote.admin import SummernoteModelAdmin
 import bleach
 
@@ -20,8 +20,15 @@ admin.site.register(Menu, MenuAdmin)
 
 
 class OpeningHourAdmin(admin.ModelAdmin):
-    list_display = ( 'day_of_week', 'open_time', 'close_time')
-    ordering = ('day_of_week',)
+    list_display = ("day_of_week", "open_time", "close_time")
+    ordering = ("day_of_week",)
 
 
 admin.site.register(OpeningHour, OpeningHourAdmin)
+
+class TableAdmin(admin.ModelAdmin):
+    list_display = ("table_number", "capacity", "status")
+    list_filter = ("status", "capacity",)
+    search_fields = ("table_number",)
+
+admin.site.register(Table, TableAdmin)

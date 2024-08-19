@@ -41,3 +41,17 @@ class OpeningHour(models.Model):
 
     def __str__(self):
         return f"{self.day_of_week}: {self.open_time} - {self.close_time}"
+
+class Table(models.Model):
+    table_number = models.PositiveIntegerField()
+    capacity = models.PositiveIntegerField()
+    status = models.CharField(choices= [
+        ('available', 'Available'),
+        ('reserved', 'Reserved'),
+    ], default= 'available')
+
+    class Meta:
+        ordering = ['table_number']
+
+    def __str__(self):
+        return f"Table: {self.table_number} - Capacity: {self.capacity}"
