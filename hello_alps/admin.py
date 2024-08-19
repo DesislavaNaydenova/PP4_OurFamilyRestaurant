@@ -12,7 +12,7 @@ class MenuAdmin(SummernoteModelAdmin):
         return bleach.clean(obj.name, tags=[], strip=True)
     name_preview.short_name = "name (preview)"
     list_display = ("name_preview","description", "price",)
-    list_filter = ("name", "categories")
+    list_filter = ("categories",)
     search_fields = ("name", "categories")
 
 

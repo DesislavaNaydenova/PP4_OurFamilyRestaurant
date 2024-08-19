@@ -315,13 +315,21 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 
 ### Fixed Bugs
 
-1. When adding a menu item the input is displayed as HTML
+1. When adding a menu item the input is displayed as HTML.
 
 ![Input as HTML](assets/images/summernote_bug.png)
 
-- The solution was to use the bleach library to sanitize the input
+- The solution was to use the bleach library to sanitize the input.
 
 ![Input fix](assets/images/summernote_bug_solution.png)
+
+2. In the Opening Hours the days of the week weren't in the right order.
+
+![Opening Hours Bug](assets/images/opening_hours_bug.png)
+
+- The solution was to annotate the queryset with the custom order and then order by this annotation.
+
+![Opening Hours fix](assets/images/opening_hours_bug_solution.png)
 
 ### Unfixed Bugs
 

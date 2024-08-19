@@ -29,7 +29,7 @@
                 <ul class="list-unstyled opening-hours-list">
                     {% for time in opening_hours %}
                     <li>
-                        <strong>{{ time.day_of_week }}:</strong> {{ time.open_time|date:"H:i" }} : {{ time.close_time|date:"H:i" }}
+                        <strong>{{ time.get_day_of_week_display }}:</strong> {{ time.open_time|date:"H:i" }} : {{ time.close_time|date:"H:i" }}
                     </li>
                     {% endfor %}
                 </ul>

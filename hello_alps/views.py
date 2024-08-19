@@ -3,13 +3,25 @@ from django.views import generic
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Menu, OpeningHour
+from django.db.models import Case, When, Value, IntegerField
 
 
 # Create your views here.
 
 # Homepage view
 def index(request):
-    opening_hours = OpeningHour.objects.all()
+    # Add custom order to the days of the week
+    ordering = Case(
+        When(day_of_week='Monday', then=Value(1)),
+        When(day_of_week='Tuesday', then=Value(2)),
+        When(day_of_week='Wednesday', then=Value(3)),
+        When(day_of_week='Thursday', then=Value(4)),
+        When(day_of_week='Friday', then=Value(5)),
+        When(day_of_week='Saturday', then=Value(6)),
+        When(day_of_week='Sunday', then=Value(7)),
+        output_field=IntegerField(),
+    )
+    opening_hours = OpeningHour.objects.annotate(day_order=ordering).order_by('day_order')
     return render(request, 'hello_alps/index.html', {'opening_hours': opening_hours})
 
 # Menu List View
