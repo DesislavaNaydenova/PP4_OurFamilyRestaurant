@@ -42,4 +42,4 @@ class MenuList(generic.ListView):
 #  return render(request, 'hello_alps/index.html', {'opening_hours': opening_hours})
 
 def reservations(request):
-    return render(request, 'reservations.html')
+    return render(request, 'hello_alps/reservations.html')
