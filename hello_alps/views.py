@@ -40,3 +40,6 @@ class MenuList(generic.ListView):
 #def OpeningHours(request):
 #    opening_hours = OpeningHour.objects.all()
 #  return render(request, 'hello_alps/index.html', {'opening_hours': opening_hours})
+
+def reservations(request):
+    return render(request, 'reservations.html')
