@@ -79,7 +79,7 @@ def register(request):
             password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=password)
             login(request, user)
-            return redirect('index')
+            return redirect('user_reservation')
     else:
         form = FormCreation()
     return render(request, 'hello_alps/register.html', {'form': form})
