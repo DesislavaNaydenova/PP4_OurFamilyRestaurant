@@ -53,6 +53,16 @@ def reservations(request):
     return render(request, 'hello_alps/reservations.html')
 
 
+# guest_reservation.html View
+def guest_reservation(request):
+    return render(request, 'hello_alps/guest_reservation.html')
+
+
+# user_reservation.html View
+def user_reservation(request):
+    return render(request, 'hello_alps/user_reservation.html')
+
+
 # Login View
 class Login(LoginView):
     template_name = 'hello_alps/login.html'
