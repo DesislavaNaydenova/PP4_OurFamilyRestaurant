@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- login.html content starts here -->
+
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="login mt-5 mx-5">
+                <h1 class="text-center">Login</h1>
+                <hr>
+                <form method="post" class="text-center">
+                    {% csrf_token %}
+                    {{ form.as_p}}
+                    <button type="submit" class="btn btn-primary">Log In</button>
+                </form>
+                <p>If you don't have an account, you can easily <a href="#">Sign Up</a> here!</p>
+            </div>
+            
+
+        </div>
+    </div>
+</div>
+
+<!-- login.html content ends here -->
+{% endblock %}

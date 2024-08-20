@@ -4,6 +4,8 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from .models import Menu, OpeningHour
 from django.db.models import Case, When, Value, IntegerField
+from django.contrib.auth.views import LoginView
+from django.urls import reverse_lazy
 
 
 # Create your views here.
@@ -26,11 +28,11 @@ def index(request):
 
 # Menu List View
 class MenuList(generic.ListView):
-    context_object_name = "sort_menu_items"
-    template_name = "hello_alps/menu_list.html"
+    context_object_name = 'sort_menu_items'
+    template_name = 'hello_alps/menu_list.html'
 
     def get_queryset(self):
-        ordered_categories = ["starters", "maindishes", "pizza", "desserts"]
+        ordered_categories = ['starters', 'maindishes', 'pizza', 'desserts']
         sort_menu_items = {category: Menu.objects.filter(categories=category) for category in ordered_categories}
         return sort_menu_items
 
@@ -41,5 +43,11 @@ class MenuList(generic.ListView):
 #    opening_hours = OpeningHour.objects.all()
 #  return render(request, 'hello_alps/index.html', {'opening_hours': opening_hours})
 
+# Reservations.html View
 def reservations(request):
     return render(request, 'hello_alps/reservations.html')
+
+# Login View
+class Login(LoginView):
+    template_name = 'hello_alps/login.html'
+    success_url = reverse_lazy('home')

@@ -339,6 +339,7 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 - For the structure of the README.md file: [GitHub: Kera Cudmore](https://github.com/kera-cudmore/readme-examples/blob/main/milestone1-readme.md)
 - For the basic information and guidance: [CodeInstitute](https://learn.codeinstitute.net/)
 - For correcting typos and helping by solving small issues: [ChatGPT](https://chatgpt.com/)
+- For Django Documentation: [Django Authentication](https://docs.djangoproject.com/en/5.1/topics/auth/)
 
 
 👩🏻‍💻 View an example of a completed Credits section [here](https://github.com/kera-cudmore/BookWorm#Credits)
