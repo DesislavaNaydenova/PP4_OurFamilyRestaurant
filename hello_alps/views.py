@@ -1,14 +1,17 @@
-from django.shortcuts import render, get_object_or_404, reverse
+from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic
 from django.contrib import messages
-from django.http import HttpResponseRedirect
-from .models import Menu, OpeningHour
-from django.db.models import Case, When, Value, IntegerField
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.views import LoginView
+from django.http import HttpResponseRedirect
+from django.db.models import Case, When, Value, IntegerField
 from django.urls import reverse_lazy
+from .models import Menu, OpeningHour
+from .forms import FormCreation
 
 
 # Create your views here.
+
 
 # Homepage view
 def index(request):
@@ -26,6 +29,7 @@ def index(request):
     opening_hours = OpeningHour.objects.annotate(day_order=ordering).order_by('day_order')
     return render(request, 'hello_alps/index.html', {'opening_hours': opening_hours})
 
+
 # Menu List View
 class MenuList(generic.ListView):
     context_object_name = 'sort_menu_items'
@@ -42,12 +46,30 @@ class MenuList(generic.ListView):
 #def OpeningHours(request):
 #    opening_hours = OpeningHour.objects.all()
 #  return render(request, 'hello_alps/index.html', {'opening_hours': opening_hours})
+ 
 
 # Reservations.html View
 def reservations(request):
     return render(request, 'hello_alps/reservations.html')
 
+
 # Login View
 class Login(LoginView):
     template_name = 'hello_alps/login.html'
     success_url = reverse_lazy('home')
+
+
+# Register View
+def register(request):
+    if request.method == 'POST':
+        form = FormCreation(request.POST)
+        if form.is_valid():
+            user = form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('index')
+    else:
+        form = FormCreation()
+    return render(request, 'hello_alps/register.html', {'form': form})

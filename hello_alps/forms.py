@@ -12,5 +12,6 @@ class FormCreation(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        for field_name in self.fields:
-            self.fields[field_name].widget.attrs['class'] = 'form-control'
+        for field_name, field in self.fields.items():
+            field.help_text = None
+            field.widget.attrs.update({'class': 'form-control'})
