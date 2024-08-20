@@ -8,14 +8,14 @@
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
             <div class="login mt-5 mx-5">
-                <h1 class="text-center">Login</h1>
+                <h1 class="text-center">Register</h1>
                 <hr>
                 <form method="post" class="text-center">
                     {% csrf_token %}
                     {{ form.as_p}}
-                    <button type="submit" class="btn btn-primary">Log In</button>
+                    <button type="submit" class="btn btn-primary">Register</button>
                 </form>
-                <p>If you don't have an account, you can easily <a href="{% url 'signup_url' %}">Sign Up</a> here!</p>
+                <p>If you already have an account, you can easily <a href="{% url 'login_url' %}">Log In</a> here!</p>
             </div>
         </div>
     </div>
