@@ -10,7 +10,7 @@
             <div class="user_reservation mt-5 mx-5">
                 <h1 class="text-center">Make a Reservation</h1>
                 <hr>
-                <form method="post">
+                <form method="post" action="{% url 'user_reservation' %}">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <button type="submit" class="btn btn-primary">Reserve</button>

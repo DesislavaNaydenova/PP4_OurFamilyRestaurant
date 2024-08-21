@@ -6,8 +6,8 @@ from django.contrib.auth.views import LoginView
 from django.http import HttpResponseRedirect
 from django.db.models import Case, When, Value, IntegerField
 from django.urls import reverse_lazy
-from .models import Menu, OpeningHour
-from .forms import FormCreation
+from .models import Menu, OpeningHour, UserReservation
+from .forms import FormCreation, UserReservationForm
 
 
 # Create your views here.
@@ -60,7 +60,15 @@ def guest_reservation(request):
 
 # user_reservation.html View
 def user_reservation(request):
-    return render(request, 'hello_alps/user_reservation.html')
+    if request.method == 'POST':
+        form = UserReservationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+        else:
+            form = UserReservationForm()
+
+    return render(request, 'hello_alps/user_reservation.html', {'form': form})
 
 
 # Login View
