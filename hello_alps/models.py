@@ -1,5 +1,8 @@
+from django.conf import settings
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 # Create your models here.
 
@@ -42,6 +45,7 @@ class OpeningHour(models.Model):
     def __str__(self):
         return f"{self.day_of_week}: {self.open_time} - {self.close_time}"
 
+
 class Table(models.Model):
     table_number = models.PositiveIntegerField()
     capacity = models.PositiveIntegerField()
@@ -55,3 +59,21 @@ class Table(models.Model):
 
     def __str__(self):
         return f"Table: {self.table_number} - Capacity: {self.capacity}"
+
+
+class UserReservation(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+    table = models.ForeignKey('Table', on_delete=models.SET_NULL, null=True)
+    date = models.DateField(default=timezone.now)
+    opening_hour = models.ForeignKey('OpeningHour', on_delete=models.SET_NULL, null=True)
+    time =models.TimeField()
+    capacity = models.ForeignKey('Table.capacity', on_delete=models.SET_NULL)
+    comment = models.TextField(blank=True, max_length=1000)
+
+    class Meta:
+        ordering = ['date', 'time']
+        verbose_name = 'User Reservation'
+        verbose_name_plural = 'User Reservations'
+
+    def __str__(self):
+        return f"{self.date} - {self.time} - Table {self.table.table_number}"

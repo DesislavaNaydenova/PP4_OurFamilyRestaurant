@@ -7,7 +7,14 @@
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
-            <p>User</p>
+            <div class="user_reservation mt-5 mx-5">
+                <h1 class="text-center">Make a Reservation</h1>
+                <hr>
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-primary">Reserve</button>
+                </form>
         </div>
     </div>
 </div>

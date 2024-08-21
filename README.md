@@ -340,6 +340,7 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 - For the basic information and guidance: [CodeInstitute](https://learn.codeinstitute.net/)
 - For correcting typos and helping by solving small issues: [ChatGPT](https://chatgpt.com/)
 - For Django Documentation: [Django Authentication](https://docs.djangoproject.com/en/5.1/topics/auth/)
+- For Django Tutorials: [Django Tutorials](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django)
 
 
 👩🏻‍💻 View an example of a completed Credits section [here](https://github.com/kera-cudmore/BookWorm#Credits)
