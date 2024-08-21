@@ -20,12 +20,30 @@ class FormCreation(UserCreationForm):
 
 
 class UserReservationForm(forms.ModelForm):
+    capacity = forms.ChoiceField(choices=[(4, '4'), (6, '6'), (8, '8')], label='Select table capacity')
+
     class Meta:
         model = UserReservation
         fields = ['date', 'time', 'table', 'capacity', 'comment']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        #table choices based on capacity
+        if 'capacity' in self.data:
+            try:
+                selected_capacity = int(self.data.get('capacity'))
+            except ValueError:
+                selected_capacity = None
+        elif self.instance.pk:
+            selected_capacity = self.instance.capacity
+        else:
+            selected_capacity = None
+
+        if selected_capacity:
+            self.fields['table'].queryset = Table.objects.filter(capacity=selected_capacity, status='available')
+        else:
+            self.fields['table'].queryset = Table.objects.none() #no tables if no capacity is selected
 
         #get the opening hours for the selected day 
         if 'date' in self.data:

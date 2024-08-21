@@ -67,7 +67,6 @@ class UserReservation(models.Model):
     date = models.DateField(default=timezone.now)
     opening_hour = models.ForeignKey('OpeningHour', on_delete=models.SET_NULL, null=True)
     time =models.TimeField()
-    capacity = models.ForeignKey('Table.capacity', on_delete=models.SET_NULL)
     comment = models.TextField(blank=True, max_length=1000)
 
     class Meta:
@@ -76,4 +75,4 @@ class UserReservation(models.Model):
         verbose_name_plural = 'User Reservations'
 
     def __str__(self):
-        return f"{self.date} - {self.time} - Table {self.table.table_number}"
+        return f"{self.date} - {self.time} - Table {self.table.table_number} (Capacity {self.table.capacity})"
