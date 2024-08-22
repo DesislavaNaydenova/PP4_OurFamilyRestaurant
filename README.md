@@ -341,6 +341,7 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 - For correcting typos and helping by solving small issues: [ChatGPT](https://chatgpt.com/)
 - For Django Documentation: [Django Authentication](https://docs.djangoproject.com/en/5.1/topics/auth/)
 - For Django Tutorials: [Django Tutorials](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django)
+- For the FavIcon: [Icons8](https://icons8.com/)
 
 
 👩🏻‍💻 View an example of a completed Credits section [here](https://github.com/kera-cudmore/BookWorm#Credits)
@@ -358,6 +359,7 @@ If you have used some code in your project that you didn't write, this is the pl
 ###  Media
 
 - The images and media used on this website are inspired by the original [Heisthof webpage](https://www.heisthof.net/). We have obtained permission from the owner to use and adapt this content. We extend our gratitude to the Heisthof team for allowing us to showcase their beautiful visuals and atmosphere through our website.
+
   
 ###  Acknowledgments
 
