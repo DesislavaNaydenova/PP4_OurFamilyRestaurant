@@ -342,6 +342,7 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 - For Django Documentation: [Django Authentication](https://docs.djangoproject.com/en/5.1/topics/auth/)
 - For Django Tutorials: [Django Tutorials](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django)
 - For the FavIcon: [Icons8](https://icons8.com/)
+- For date and time picker: [flatpickr](https://flatpickr.js.org/)
 
 
 👩🏻‍💻 View an example of a completed Credits section [here](https://github.com/kera-cudmore/BookWorm#Credits)

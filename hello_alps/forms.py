@@ -25,6 +25,10 @@ class UserReservationForm(forms.ModelForm):
     class Meta:
         model = UserReservation
         fields = ['date', 'time', 'capacity', 'comment']
+        widgets = {
+            'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'time': forms.TimeInput(attrs={'type': 'time', 'class': 'form-control'}),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

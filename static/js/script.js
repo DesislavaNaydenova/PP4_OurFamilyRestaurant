@@ -27,3 +27,19 @@ window.addEventListener('DOMContentLoaded', () => {
         scrollPos = currentTop;
     });
 })
+
+document.addEventListener('DOMContentLoaded', function() {
+    flatpickr("#id_date", {
+        dateFormat: "d.m.Y",
+        minDate: "today"
+    });
+    flatpickr("#id_time", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr:true,
+        minTime: "14:00",
+        maxTime: "20:00"
+    }
+    )
+});
