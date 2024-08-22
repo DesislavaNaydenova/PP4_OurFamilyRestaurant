@@ -67,8 +67,10 @@ def user_reservation(request):
             return redirect('index')
         else:
             form = UserReservationForm()
+            
+    form = UserReservationForm()
 
-    return render(request, 'hello_alps/user_reservation.html', {'form': form})
+    return render(request, 'hello_alps/user_reservation.html', {'form':form})
 
 
 # Login View
