@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Menu, OpeningHour, Table
+from .models import Menu, OpeningHour, Table, UserReservation
 from django_summernote.admin import SummernoteModelAdmin
 import bleach
 
@@ -32,3 +32,11 @@ class TableAdmin(admin.ModelAdmin):
     search_fields = ("table_number",)
 
 admin.site.register(Table, TableAdmin)
+
+class UserReservationAdmin(admin.ModelAdmin):
+    list_display = ("user", "table", "date", "time", "comment")
+    list_filter = ("date", "time", "table")
+    search_fields = ("user__username", "table__table_capacity", "comment")
+    readonly_fields = ("user", "date")
+
+admin.site.register(UserReservation, UserReservationAdmin)
