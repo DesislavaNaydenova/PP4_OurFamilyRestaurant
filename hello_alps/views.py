@@ -6,7 +6,7 @@ from django.contrib.auth.views import LoginView
 from django.http import HttpResponseRedirect
 from django.db.models import Case, When, Value, IntegerField
 from django.urls import reverse_lazy
-from .models import Menu, OpeningHour, UserReservation
+from .models import Menu, OpeningHour, UserReservation, About
 from .forms import FormCreation, UserReservationForm
 
 
@@ -93,3 +93,11 @@ def register(request):
     else:
         form = FormCreation()
     return render(request, 'hello_alps/register.html', {'form': form})
+
+# About View
+def about_me(request):
+    about = About.objects.all().order_by('-updated_on').first()
+
+    return render(
+        request, "hello_alps/about.html", {"about": about},
+    )

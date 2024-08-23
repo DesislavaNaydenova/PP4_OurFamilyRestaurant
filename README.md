@@ -351,7 +351,8 @@ The Credits section is where you can credit all the people and sources you used 
 
 ### Code Used
 
-If you have used some code in your project that you didn't write, this is the place to make note of it. Credit the author of the code and if possible a link to where you found the code. You could also add in a brief description of what the code does, or what you are using it for here.
+
+- For the about page: [Code Instituse Solutions](https://github.com/Code-Institute-Solutions/blog/tree/main/10_create_about_app/about)
 
 ### Content
 
@@ -360,6 +361,7 @@ If you have used some code in your project that you didn't write, this is the pl
 ###  Media
 
 - The images and media used on this website are inspired by the original [Heisthof webpage](https://www.heisthof.net/). We have obtained permission from the owner to use and adapt this content. We extend our gratitude to the Heisthof team for allowing us to showcase their beautiful visuals and atmosphere through our website.
+- For the family photo: [FreePik](https://www.freepik.com/)
 
   
 ###  Acknowledgments
