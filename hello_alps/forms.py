@@ -51,4 +51,6 @@ class UserReservationForm(forms.ModelForm):
                 self.fields['time'].choices = time_choices
             except ValueError:
                 self.fields['time'].choices =[]
+        else:
+            self.fields['time'].choices = []
             
