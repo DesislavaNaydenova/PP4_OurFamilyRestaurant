@@ -63,9 +63,11 @@ def user_reservation(request):
     if request.method == 'POST':
         form = UserReservationForm(request.POST)
         if form.is_valid():
-            reservation = form.save()
+            reservation = form.save(commit= False)
+            reservation.user = request.user
+            reservation.save()
             return render(request, 'hello_alps/user_reservation.html', {
-                'form': UserReservationForm(),
+                'form': form,
                 'success': True,
                 'reservation_date': reservation.date,
                 'reservation_time': reservation.time,
