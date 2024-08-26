@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, reverse, redirect
 from django.views import generic
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.http import HttpResponseRedirect
 from django.db.models import Case, When, Value, IntegerField
@@ -59,6 +60,7 @@ def guest_reservation(request):
 
 
 # user_reservation.html View
+@login_required
 def user_reservation(request):
     if request.method == 'POST':
         form = UserReservationForm(request.POST)
@@ -73,12 +75,16 @@ def user_reservation(request):
                 'reservation_time': reservation.time,
             })
         else:
-            form = UserReservationForm()
+            return render(request, 'hello_alps/user_reservation.html', {'form':form})
             
     form = UserReservationForm()
 
     return render(request, 'hello_alps/user_reservation.html', {'form':form})
-
+    if form.is_valid():
+        print("Form is valid")
+    else:
+        print("Form errors:", form.errors)
+    
 
 # Login View
 class Login(LoginView):

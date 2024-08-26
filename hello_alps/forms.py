@@ -25,7 +25,7 @@ class UserReservationForm(forms.ModelForm):
         model = UserReservation
         fields = ['date', 'time', 'table', 'comment']
         widgets = {
-            'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control', 'format': '%Y-%m-%d'}),
             'time': forms.TimeInput(attrs={'type': 'time', 'class': 'form-control'}),
         }
 
@@ -36,7 +36,7 @@ class UserReservationForm(forms.ModelForm):
         if 'date' in self.data:
             selected_date_str = self.data.get('date')
             try:
-                selected_date = datetime.strptime(selected_date_str, '%d-%m-%Y').date()
+                selected_date = datetime.strptime(selected_date_str, '%Y-%m-%d').date()
                 day_of_week = selected_date.strftime('%A')
                 opening_hours = OpeningHour.objects.filter(day_of_week=day_of_week)
 

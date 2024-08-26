@@ -31,6 +31,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 SITE_ID=1
 LOGIN_REDIRECT_URL='/'
 LOGOUT_REDIRECT_URL='/'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -53,13 +56,15 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles', 
-    'django_summernote',
-    'hello_alps',
+    'django.contrib.staticfiles',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'crispy_forms',
+    'crispy_bootstrap5',    
+    'hello_alps',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
