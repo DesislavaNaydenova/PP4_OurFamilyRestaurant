@@ -9,6 +9,7 @@ from django.db.models import Case, When, Value, IntegerField
 from django.urls import reverse_lazy
 from .models import Menu, OpeningHour, UserReservation, About
 from .forms import FormCreation, UserReservationForm
+from datetime import datetime
 
 
 # Create your views here.
@@ -63,13 +64,12 @@ def guest_reservation(request):
 @login_required
 def user_reservation(request):
     if request.method == 'POST':
+        print(request.POST) # Debugging
         form = UserReservationForm(request.POST)
         if form.is_valid():
             print("Form is valid, processing reservation...") # Debugging
             reservation = form.save(commit= False)
             reservation.user = request.user
-            if reservation.table is None:
-                print("Table is not selected.")  # Debugging
             reservation.save()
             print("Reservation saved.") # Debugging
             return render(request, 'hello_alps/user_reservation.html', {
@@ -84,11 +84,15 @@ def user_reservation(request):
             
     form = UserReservationForm()
 
-    return render(request, 'hello_alps/user_reservation.html', {'form':form})
-    if form.is_valid():
-        print("Form is valid") # Debugging
-    else:
-        print("Form errors:", form.errors) # Debugging
+    if 'date' in request.GET:
+        try:
+            selected_date = datetime.strptime(request.GET['date'], '%Y-%m-%d').date()
+            time_choices = get_time_choices(selected_date)
+            form.fields['time'].choices = time_choices
+        except ValueError:
+            messages.error(request, "Invalida date format.")
+
+    return render(request, 'hello_alps/user_reservation.html', {'form': form})
     
 
 # Login View

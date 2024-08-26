@@ -15,13 +15,7 @@
                     <form method="post" class="text-center col-md-8 col-lg-8 col-xl-7"
                         action="{% url 'user_reservation' %}">
                         {% csrf_token %}
-                        <!-- Manualy render the date field -->
-                        <div>
-                            <label for="id_date" class="form-label">Date:</label>
-                            <input type="date" name="date" id="id_date" value="{{ form.date.value|date:'Y-m-d'}}"
-                                class="form-control" required>
-                        </div>
-                        <!-- Render other fields -->
+                        {{ form.date|as_crispy_field }}
                         {{ form.time|as_crispy_field }}
                         {{ form.table|as_crispy_field }}
                         {{ form.comment|as_crispy_field }}

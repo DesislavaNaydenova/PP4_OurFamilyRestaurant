@@ -20,23 +20,21 @@ class FormCreation(UserCreationForm):
 
 
 class UserReservationForm(forms.ModelForm):
+    # date = forms.DateField(widget=forms.DateInput(format='%Y-%m-%d'), input_formats=['%d-%m-%Y'])
+    date = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}, format='%d-%m-%Y'),
+        input_formats=['%d.%m.%Y', '%d-%m-%Y', '%Y-%m-%d']  
+    )
     
     class Meta:
         model = UserReservation
         fields = ['date', 'time', 'table', 'comment']
         widgets = {
-            'date': forms.DateInput(attrs={'type': 'date'}), #, 'class': 'form-control', 'format': '%Y-%m-%d'
+            # 'date': forms.DateInput(attrs={'type': 'date'}), #, 'class': 'form-control', 'format': '%Y-%m-%d'
             'time': forms.TimeInput(attrs={'type': 'time'}), #, 'class': 'form-control'
         }
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-
-        #get the opening hours for the selected day 
-        if 'date' in self.data:
-            selected_date_str = self.data.get('date')
-            try:
-                selected_date = datetime.strptime(selected_date_str, '%Y-%m-%d').date()
+    def get_time_choices(selected_date):
                 day_of_week = selected_date.strftime('%A')
                 opening_hours = OpeningHour.objects.filter(day_of_week=day_of_week)
 
@@ -48,9 +46,5 @@ class UserReservationForm(forms.ModelForm):
                         time_choices.append((start_time, start_time.strftime('%H:%M')))
                         start_time = (datetime.combine(datetime.today(), start_time) + timedelta(minutes=30)).time()
 
-                self.fields['time'].choices = time_choices
-            except ValueError:
-                self.fields['time'].choices =[]
-        else:
-            self.fields['time'].choices = []
+                return time_choices
             
