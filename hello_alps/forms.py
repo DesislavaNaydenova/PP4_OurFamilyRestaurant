@@ -25,8 +25,8 @@ class UserReservationForm(forms.ModelForm):
         model = UserReservation
         fields = ['date', 'time', 'table', 'comment']
         widgets = {
-            'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control', 'format': '%Y-%m-%d'}),
-            'time': forms.TimeInput(attrs={'type': 'time', 'class': 'form-control'}),
+            'date': forms.DateInput(attrs={'type': 'date'}), #, 'class': 'form-control', 'format': '%Y-%m-%d'
+            'time': forms.TimeInput(attrs={'type': 'time'}), #, 'class': 'form-control'
         }
 
     def __init__(self, *args, **kwargs):

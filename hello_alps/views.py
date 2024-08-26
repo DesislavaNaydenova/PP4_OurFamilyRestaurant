@@ -65,25 +65,30 @@ def user_reservation(request):
     if request.method == 'POST':
         form = UserReservationForm(request.POST)
         if form.is_valid():
+            print("Form is valid, processing reservation...") # Debugging
             reservation = form.save(commit= False)
             reservation.user = request.user
+            if reservation.table is None:
+                print("Table is not selected.")  # Debugging
             reservation.save()
+            print("Reservation saved.") # Debugging
             return render(request, 'hello_alps/user_reservation.html', {
-                'form': form,
+                'form': UserReservationForm(),
                 'success': True,
                 'reservation_date': reservation.date,
                 'reservation_time': reservation.time,
             })
         else:
+            print("Form errors:", form.errors) # Debugging
             return render(request, 'hello_alps/user_reservation.html', {'form':form})
             
     form = UserReservationForm()
 
     return render(request, 'hello_alps/user_reservation.html', {'form':form})
     if form.is_valid():
-        print("Form is valid")
+        print("Form is valid") # Debugging
     else:
-        print("Form errors:", form.errors)
+        print("Form errors:", form.errors) # Debugging
     
 
 # Login View

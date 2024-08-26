@@ -75,7 +75,8 @@ class UserReservation(models.Model):
         verbose_name_plural = 'User Reservations'
 
     def __str__(self):
-        return f"{self.date} - {self.time} - Table {self.table.table_number} (Capacity {self.table.capacity})"
+        table_info = f"Table {self.table.table_number} (Capacity {self.table.capacity})" if self.table else "No table asigned"
+        return f"{self.date} - {self.time} - {table_info}" #Table {self.table.number} (Capacity {self.table.capacity})"
 
 class About(models.Model):
     title = models.CharField(max_length=200)

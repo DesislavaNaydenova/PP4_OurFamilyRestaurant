@@ -39,7 +39,7 @@ admin.site.register(Table, TableAdmin)
 class UserReservationAdmin(admin.ModelAdmin):
     list_display = ("user", "table", "date", "time", "comment")
     list_filter = ("date", "time", "table")
-    search_fields = ("user__username", "table__table_capacity", "comment")
+    search_fields = ("user__username", "table__table_number", "comment")
     readonly_fields = ("user", "date")
 
 

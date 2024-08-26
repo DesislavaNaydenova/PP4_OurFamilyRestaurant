@@ -11,26 +11,33 @@
             <div class="user_reservation mt-5 mx-5">
                 <h1 class="text-center">Make a Reservation</h1>
                 <hr>
-                <form method="post" class="text-center" action="{% url 'user_reservation' %}">
-                    {% csrf_token %}
-                    <!-- Manualy render the date field -->
-                    <div>
-                        <label for="id_date">Date:</label>
-                        <input type="date" name="date" id="id_date" value="{{ form.date.value|date:'Y-m-d'}}" class="form-control" required>
-                    </div>
-                    <!-- Render other fields -->
-                    {{ form.time|as_crispy_field }}
-                    {{ form.table|as_crispy_field }}
-                    {{ form.comment|as_crispy_field }}
-                    <button type="submit" class="btn btn-primary">Reserve</button>
-                </form>
+                <div class="d-flex justify-content-center">
+                    <form method="post" class="text-center col-md-8 col-lg-8 col-xl-7"
+                        action="{% url 'user_reservation' %}">
+                        {% csrf_token %}
+                        <!-- Manualy render the date field -->
+                        <div>
+                            <label for="id_date" class="form-label">Date:</label>
+                            <input type="date" name="date" id="id_date" value="{{ form.date.value|date:'Y-m-d'}}"
+                                class="form-control" required>
+                        </div>
+                        <!-- Render other fields -->
+                        {{ form.time|as_crispy_field }}
+                        {{ form.table|as_crispy_field }}
+                        {{ form.comment|as_crispy_field }}
+                        <button type="submit" class="btn btn-primary">Reserve</button>
+                    </form>
+                </div>
                 <!-- Success Modal -->
-                 <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+                <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel"
+                    aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="successModalLabel">Your reservation has been successful!</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <h5 class="modal-title" id="successModalLabel">Your reservation has been successful!
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <h6>Thank you for making a reservation. We look forward to serving you!</h6>
@@ -43,7 +50,7 @@
                             </div>
                         </div>
                     </div>
-                 </div>
+                </div>
                 <p class="text-center">Thank You for choosing out family restaurant!</p>
             </div>
         </div>
@@ -52,8 +59,10 @@
 <!-- target the Modal to show automaticaly -->
 {% if success %}
 <script>
-    var myModal = new bootstrap.Modal(document.getElementById('successModal'));
-    myModal.show();
+    document.addEventListener("DOMContentLoaded", function () {
+        var myModal = new bootstrap.Modal(document.getElementById('successModal'));
+        myModal.show();
+    });
 </script>
 {% endif %}
 
