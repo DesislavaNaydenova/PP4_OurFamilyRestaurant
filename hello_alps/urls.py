@@ -1,5 +1,6 @@
 from .import views
 from django.urls import path
+from django.contrib.auth import views as auth_views
 from .views import Login, register, user_reservation
 
 urlpatterns = [
@@ -16,4 +17,5 @@ urlpatterns = [
     path('user_reservations/', views.user_reservations, name='user_reservations'),
     path('edit_reservation/<int:reservation_id>/', views.edit_reservation, name='edit_reservation'),
     path('cancel_reservation/<int:reservation_id>/', views.cancel_reservation, name='cancel_reservation'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]

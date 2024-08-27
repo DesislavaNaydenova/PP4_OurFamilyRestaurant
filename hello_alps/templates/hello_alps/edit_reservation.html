@@ -11,12 +11,13 @@
             <div class="user_reservation mt-5 mx-5">
                 <h1 class="text-center">{{request.user}}, edit Your Reservation</h1>
                 <hr>
-                <div class="justify-content-center">
+                <div class="d-flex justify-content-center">
                     <form method="post" class="text-center col-md-8 col-lg-8 col-xl-7"
                         action="{% url 'edit_reservation' reservation.id %}">
                         {% csrf_token %}
                         {{ form|crispy }}
                         <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <hr>
                     </form>
                 </div>
             </div>

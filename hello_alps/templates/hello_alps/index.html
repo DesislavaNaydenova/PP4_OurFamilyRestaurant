@@ -11,12 +11,29 @@
             <div class="d-grid gap-2 mb-4">
                 <a href="{% url 'menu_list'  %}" class="btn btn-primary btn-lg text-uppercase">Menu</a>
             </div>
+            {% if user.is_authenticated %}
+            <!-- Button link Reservation -->
+            <div class="d-grid gap-2 mb-4">
+                <a href="{% url 'user_reservation' %}" class="btn btn-primary btn-lg text-uppercase">Make a Reservation</a>
+            </div>
+            <!-- Button link View upcoming reservations -->
+            <div class="d-grid gap-2 mb-4">
+                <a href="{% url 'user_reservations' %}" class="btn btn-primary btn-lg text-uppercase">Upcoming Reservations</a>
+            </div>
+            <div class="d-grid gap-2 mb-4 ">
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                </form>
+                <a href="{% url 'logout' %}" class="btn btn-primary btn-lg text-uppercase">Log Out</a>
+            </div>  
+            {% else %}
             <!-- Button link Reservation -->
             <div class="d-grid gap-2 mb-4">
                 <a href="{% url 'reservations' %}" class="btn btn-primary btn-lg text-uppercase">Make a Reservation</a>
-            </div>
+            </div>            
+            {% endif %}
              <!-- Button link About Our Family -->
-             <div class="d-grid gap-2 mb-4">
+            <div class="d-grid gap-2 mb-4">
                 <a href="{% url 'about' %}" class="btn btn-primary btn-lg text-uppercase">About Our Family</a>
             </div>
              <!-- Button link Location -->
