@@ -1,14 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div>
-    {{request.user}}
-</div>
+
 <!-- reservations.html content starts here -->
 
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
+            {% if user.is_authenticated %}
+                <script type="text/javascript">
+                    window.location.href = "{% url 'user_reservations' %}";
+            </script>
+            {% else %}
             <!-- Button link Log in -->
             <div class="d-grid gap-2 mb-4">
                 <a href="{% url 'login_url' %}" class="btn btn-primary btn-lg text-uppercase">Log In</a>
@@ -21,6 +24,7 @@
              <div class="d-grid gap-2 mb-4">
                 <a href="{% url 'guest_reservation' %}" class="btn btn-primary btn-lg text-uppercase">Continue as Guest</a>
             </div>
+            {% endif %}
         </div>
     </div>
 </div>

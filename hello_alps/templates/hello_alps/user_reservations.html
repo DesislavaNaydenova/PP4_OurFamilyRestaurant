@@ -25,6 +25,10 @@
                     <p>No upcoming reservations.</p>
                     {% endfor %}
                 </div>
+                <!-- Option to make a new reservation -->
+                <div class="d-grid gap-2 mt-4">
+                    <a href="{% url 'user_reservation' %}" class="btn btn-primary btn-lg text-uppercase">Make a New Reservation</a>
+                </div>
                 {% if reservation_success %}
                 <!-- Success Modal -->
                 <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel"
