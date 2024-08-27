@@ -78,6 +78,7 @@ def user_reservation(request):
             print("Form is valid, processing reservation...") # Debugging
             reservation = form.save(commit= False)
             reservation.user = request.user
+            request.session['reservation_success'] = True
             reservation.save()
             print("Reservation saved.") # Debugging
             return redirect('user_reservations')
@@ -108,8 +109,19 @@ def user_reservation(request):
 @login_required
 def user_reservations(request):
     reservations = UserReservation.objects.filter(user=request.user, date__gte=datetime.today()).order_by('date')
-    return render(request, 'hello_alps/user_reservations.html', {'reservations': reservations})
 
+     #Retrieve session flags
+    reservation_success = request.session.pop('reservation_success', False)
+    edit_success = request.session.pop('edit_success', False)
+    cancel_warning = request.session.pop('cancel_warning', False)
+
+    return render(request, 'hello_alps/user_reservations.html', {
+        'reservations': reservations,
+        'reservation_success': reservation_success,
+        'edit_success': edit_success,
+        'cancel_warning': cancel_warning,
+        })
+    
 
 # Edit reservation View
 @login_required
@@ -120,6 +132,7 @@ def edit_reservation(request, reservation_id):
         form = UserReservationForm(request.POST, instance=reservation)
         if form.is_valid():
             form.save()
+            request.session['edit_success'] = True
             return redirect('user_reservations')
     else:
         form = UserReservationForm(instance=reservation)
@@ -135,6 +148,7 @@ def edit_reservation(request, reservation_id):
 def cancel_reservation(request, reservation_id):
     reservation = get_object_or_404(UserReservation, id= reservation_id, user = request.user)
     reservation.delete()
+    request.session['cancel_warning'] = True
     return redirect('user_reservations')
 
 

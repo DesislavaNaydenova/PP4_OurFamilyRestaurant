@@ -331,6 +331,12 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 
 ![Opening Hours fix](assets/images/opening_hours_bug_solution.png)
 
+3. The Date format was not valid
+
+![Valide Date format](assets/images/valide_date_bug.png)
+
+- Changed the format in the user_reservation view in order to fulfill the Django expectations.
+
 ### Unfixed Bugs
 
 

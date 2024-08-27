@@ -22,43 +22,11 @@
                         <button type="submit" class="btn btn-primary">Reserve</button>
                     </form>
                 </div>
-                <!-- Success Modal -->
-                <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="successModalLabel">Your reservation has been successful!
-                                </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <h6>Thank you for making a reservation. We look forward to serving you!</h6>
-                                {% if success %}
-                                <p>Your reservation is for: {{ reservation_date}} at {{ reservation_time }}</p>
-                                {% endif %}
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-pimary" data-bs-dismiss="modal">Colse</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <p class="text-center">Thank You for choosing out family restaurant!</p>
             </div>
         </div>
     </div>
 </div>
-<!-- target the Modal to show automaticaly -->
-{% if success %}
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var myModal = new bootstrap.Modal(document.getElementById('successModal'));
-        myModal.show();
-    });
-</script>
-{% endif %}
 
 <!-- user_reservation.html content ends here -->
 {% endblock %}
