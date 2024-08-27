@@ -12,4 +12,5 @@ urlpatterns = [
     path('guest_reservation/', views.guest_reservation, name='guest_reservation'),
     path('user_reservation/', views.user_reservation, name='user_reservation'),
     path('about/', views.about_me, name='about'),
+    path('contact/', views.contact, name='contact'),
 ]

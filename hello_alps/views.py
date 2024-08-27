@@ -123,3 +123,8 @@ def about_me(request):
     return render(
         request, "hello_alps/about.html", {"about": about},
     )
+
+
+# contact.html View
+def contact(request):
+    return render(request, 'hello_alps/contact.html')
