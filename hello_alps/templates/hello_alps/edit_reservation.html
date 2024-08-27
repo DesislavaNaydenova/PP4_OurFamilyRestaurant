@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+
+<!-- edit_reservation.html content starts here -->
+
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <div class="user_reservation mt-5 mx-5">
+                <h1 class="text-center">{{request.user}}, edit Your Reservation</h1>
+                <hr>
+                <div class="justify-content-center">
+                    <form method="post" class="text-center col-md-8 col-lg-8 col-xl-7"
+                        action="{% url 'edit_reservation' reservation.id %}">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- edit_reservation.html content ends here -->
+{% endblock %}

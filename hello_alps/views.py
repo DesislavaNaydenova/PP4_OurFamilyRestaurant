@@ -64,20 +64,29 @@ def guest_reservation(request):
 @login_required
 def user_reservation(request):
     if request.method == 'POST':
-        print(request.POST) # Debugging
-        form = UserReservationForm(request.POST)
+        post_data = request.POST.copy()
+        date_str = post_data.get('date')
+
+        if date_str:
+            day, month, year = date_str.split('.')
+            formatted_date = f"{year}-{month}-{day}"
+            post_data['date'] = formatted_date
+
+        form = UserReservationForm(post_data)
+
         if form.is_valid():
             print("Form is valid, processing reservation...") # Debugging
             reservation = form.save(commit= False)
             reservation.user = request.user
             reservation.save()
             print("Reservation saved.") # Debugging
-            return render(request, 'hello_alps/user_reservation.html', {
-                'form': UserReservationForm(),
-                'success': True,
-                'reservation_date': reservation.date,
-                'reservation_time': reservation.time,
-            })
+            return redirect('user_reservations')
+            #return render(request, 'hello_alps/user_reservation.html', {
+            #    'form': UserReservationForm(),
+            #    'success': True,
+            #    'reservation_date': reservation.date,
+            #    'reservation_time': reservation.time,
+            #})
         else:
             print("Form errors:", form.errors) # Debugging
             return render(request, 'hello_alps/user_reservation.html', {'form':form})
@@ -94,6 +103,40 @@ def user_reservation(request):
 
     return render(request, 'hello_alps/user_reservation.html', {'form': form})
     
+
+# Reservation management
+@login_required
+def user_reservations(request):
+    reservations = UserReservation.objects.filter(user=request.user, date__gte=datetime.today()).order_by('date')
+    return render(request, 'hello_alps/user_reservations.html', {'reservations': reservations})
+
+
+# Edit reservation View
+@login_required
+def edit_reservation(request, reservation_id):
+    reservation = get_object_or_404(UserReservation, id=reservation_id, user=request.user)
+
+    if request.method =='POST':
+        form = UserReservationForm(request.POST, instance=reservation)
+        if form.is_valid():
+            form.save()
+            return redirect('user_reservations')
+    else:
+        form = UserReservationForm(instance=reservation)
+
+    return render(request, 'hello_alps/edit_reservation.html', {
+        'form': form,
+        'reservation': reservation
+        })
+
+
+# Cancel reservation View
+@login_required
+def cancel_reservation(request, reservation_id):
+    reservation = get_object_or_404(UserReservation, id= reservation_id, user = request.user)
+    reservation.delete()
+    return redirect('user_reservations')
+
 
 # Login View
 class Login(LoginView):

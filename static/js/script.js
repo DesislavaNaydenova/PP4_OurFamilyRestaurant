@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         noCalendar: true,
         dateFormat: "H:i",
         time_24hr:true,
-        minTime: "14:00",
+        minTime: "15:00",
         maxTime: "20:00"
     }
     )
