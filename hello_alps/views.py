@@ -113,11 +113,15 @@ def user_reservations(request):
      #Retrieve session flags
     reservation_success = request.session.pop('reservation_success', False)
     edit_success = request.session.pop('edit_success', False)
+    reservation_date = request.session.pop('reservation_date', None)
+    reservation_time = request.session.pop('reservation_time', None)
     cancel_warning = request.session.pop('cancel_warning', False)
 
     return render(request, 'hello_alps/user_reservations.html', {
         'reservations': reservations,
         'reservation_success': reservation_success,
+        'reservation_date': reservation_date,
+        'reservation_time': reservation_time,
         'edit_success': edit_success,
         'cancel_warning': cancel_warning,
         })
@@ -131,8 +135,10 @@ def edit_reservation(request, reservation_id):
     if request.method =='POST':
         form = UserReservationForm(request.POST, instance=reservation)
         if form.is_valid():
-            form.save()
+            updated_reservation = form.save()
             request.session['edit_success'] = True
+            request.session['reservation_date'] = updated_reservation.date.strftime('%Y.%m.%d')
+            request.session['reservation_time'] = updated_reservation.time.strftime('%H:%M')
             return redirect('user_reservations')
     else:
         form = UserReservationForm(instance=reservation)
