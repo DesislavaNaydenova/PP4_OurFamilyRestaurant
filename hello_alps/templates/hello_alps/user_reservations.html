@@ -18,7 +18,12 @@
                         <p>Table {{ reservation.table.table_number }} (Capacity {{ reservation.table.capacity }})</p>
                         <p>Comment: {{ reservation.comment }}</p>
                         <a href="{% url 'edit_reservation' reservation.id %}" class="btn btn-secondary">Edit</a>
-                        <a href="{% url 'cancel_reservation' reservation.id %}" class="btn btn-danger">Cancel</a>
+                        <button class="btn btn-danger cancel-btn"
+                        data-reservation-id="{{ reservation.id }}"
+                        data-reservation-date="{{ reservation.date|date:'Y.m.d' }}"
+                        data-reservation-time="{{ reservation.time|time:'H:i' }}">
+                        Cancel
+                        </button>
                     </div>
                     <hr>
                     {% empty %}
@@ -82,6 +87,25 @@
                     </div>
                 </div>
                 {% endif %}
+
+                <!-- Cancel Confirmation Modal -->
+                <div class="modal fade" id="cancelConfirmationModal" tabindex="-1" aria-labelledby="cancelConfirmationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="cancelConfirmationModalLabel">Please, Confirm Cancelation</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to cancel your reservation for <strong id="reservationDate"></strong> at <strong id="reservationTime"></strong>?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Keep Reservation</button>
+                                <a href="#" id="confirmCancelLink" class="btn btn-danger">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 {% if cancel_warning %}
                 <!-- Cancel Success Modal -->
