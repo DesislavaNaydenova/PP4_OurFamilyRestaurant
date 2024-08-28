@@ -56,6 +56,9 @@
                 <div class="col-md-10 col-lg-8 col-xl-7">
                     <div class="site-heading">
                         <h1>Our Family Restaurant</h1>
+                        {% if user.is_authenticated %}
+                        <span class="subheading">Dear {{request.user}}, Welcome to</span>
+                        {% endif %}
                         <span class="subheading">Our Restaurant's Website</span>
                     </div>
                 </div>

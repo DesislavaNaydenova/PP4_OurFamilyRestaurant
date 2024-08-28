@@ -34,14 +34,8 @@
                         {% csrf_token %}
                     </form>
                     <a href="{% url 'logout' %}" class="btn btn-primary btn-lg text-uppercase" id="logoutLink">Log Out</a>
-                </div>                
-                <!--<div class="d-grid gap-2 mt-4 justify-content-center">
-                    <form method="post" action="{% url 'logout' %}">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-primary btn-lg text-uppercase">Log Out</button>
-                    </form>
-                </div> -->
-                <hr>
+                </div>
+                <p class="text-center">Thank You for choosing our family restaurant!</p>
                 {% if reservation_success %}
                 <!-- Success Modal -->
                 <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel"
@@ -49,12 +43,12 @@
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="successModalLabel">Your reservation has been successful!
+                                <h5 class="modal-title text-center" id="successModalLabel">Your reservation has been successful!
                                 </h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body text-center">
                                 <h6>Thank you for making a reservation. We look forward to serving you!</h6>
                                 <p>Your reservation is for: {{ reservation_date}} at {{ reservation_time }}</p>
                             </div>
