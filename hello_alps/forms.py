@@ -56,8 +56,8 @@ class UserReservationForm(forms.ModelForm):
             start_time = hour.open_time
             end_time = hour.close_time
             while start_time < end_time:
-                # Check if table is availablefor the time
-                if not UserReservation.objects.filter(date=selected_date, time=start_time, table=self.data.get('table')).exists():
+                # Check if table is availablefor the entire day
+                if not UserReservation.objects.filter(date=selected_date, table=self.cleaned_data.get('table')).exists():
                     time_choices.append((start_time.strftime('%H:%M'), start_time.strftime('%H:%M')))
                 start_time = (datetime.combine(datetime.today(), start_time) + timedelta(minutes=30)).time()
 
@@ -78,9 +78,9 @@ class UserReservationForm(forms.ModelForm):
         date = self.cleaned_data.get('date')
         time = self.cleaned_data.get('time')
 
-        if date and time:
-            if UserReservation.objects.filter(date=date, time=time, table=table).exists():
-                raise ValidationError(f'Table {table.table_number} is already reserved at {time} on {date}. Please, choose another table!')
+        if date:
+            if UserReservation.objects.filter(date=date, table=table).exists():
+                raise ValidationError(f'Table {table.table_number} is already reserved on {date}. Please, choose another table!')
 
         return table
             

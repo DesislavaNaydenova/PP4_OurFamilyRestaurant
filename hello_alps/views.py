@@ -68,9 +68,9 @@ def user_reservation(request):
         date_str = post_data.get('date')
 
         if date_str:
-            day, month, year = date_str.split('.')
-            formatted_date = f"{year}-{month}-{day}"
+            formatted_date = datetime.strptime(date_str, '%d.%m.%Y').strftime('%Y-%m-%d')
             post_data['date'] = formatted_date
+
 
         form = UserReservationForm(post_data)
 
