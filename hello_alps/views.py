@@ -77,8 +77,7 @@ def user_reservation(request):
         if form.is_valid():
             reservation = form.save(commit= False)
             reservation.user = request.user
-            reservation.save()
-            
+            reservation.save()            
             
             request.session['reservation_success'] = True
             request.session['reservation_date'] = reservation.date.strftime('%Y.%m.%d')

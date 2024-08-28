@@ -337,6 +337,14 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 
 - Changed the format in the user_reservation view in order to fulfill the Django expectations.
 
+4. After deploying it Heroku the siccess modal doesn't show the date and time of the reservation
+
+![Success Modal Date an Time](assets/images/success_modal_bug.png)
+
+- Store the reservation date and time in the session so that they can be displayed in the success modal.
+
+![Success Modal Date an Time Fix](assets/images/success_modal_fix.png)
+
 ### Unfixed Bugs
 
 
