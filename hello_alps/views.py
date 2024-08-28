@@ -75,21 +75,17 @@ def user_reservation(request):
         form = UserReservationForm(post_data)
 
         if form.is_valid():
-            print("Form is valid, processing reservation...") # Debugging
             reservation = form.save(commit= False)
             reservation.user = request.user
-            request.session['reservation_success'] = True
             reservation.save()
-            print("Reservation saved.") # Debugging
+            
+            
+            request.session['reservation_success'] = True
+            request.session['reservation_date'] = reservation.date.strftime('%Y.%m.%d')
+            request.session['reservation_time'] = reservation.time.strftime('%H:%M')
+
             return redirect('user_reservations')
-            #return render(request, 'hello_alps/user_reservation.html', {
-            #    'form': UserReservationForm(),
-            #    'success': True,
-            #    'reservation_date': reservation.date,
-            #    'reservation_time': reservation.time,
-            #})
         else:
-            print("Form errors:", form.errors) # Debugging
             return render(request, 'hello_alps/user_reservation.html', {'form':form})
             
     form = UserReservationForm()
