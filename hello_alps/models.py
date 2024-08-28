@@ -3,6 +3,8 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Create your models here.
 
@@ -77,6 +79,24 @@ class UserReservation(models.Model):
     def __str__(self):
         table_info = f"Table {self.table.table_number} (Capacity {self.table.capacity})" if self.table else "No table asigned"
         return f"{self.date} - {self.time} - {table_info}" #Table {self.table.number} (Capacity {self.table.capacity})"
+
+
+@receiver(post_save, sender=UserReservation)
+def update_table_status(sender, instance, **kwargs):
+    table = instance.table
+    if kwargs.get('created', False):
+        table.status = 'Reserved'
+        table.save()
+
+
+@receiver(post_save, sender=UserReservation)
+def update_table_status_on_delete(sender, instance, **kwargs):
+    if kwargs.get('created', False):
+        reserved_tables = UserReservation.objects.filter(table=instance.table, date=instance.date, time=instance.time).exists()
+        if not reserved_tables:
+            instance.table.status = 'Available'
+            instance.table.save()
+
 
 class About(models.Model):
     title = models.CharField(max_length=200)

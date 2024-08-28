@@ -28,9 +28,14 @@ admin.site.register(OpeningHour, OpeningHourAdmin)
 
 
 class TableAdmin(admin.ModelAdmin):
-    list_display = ("table_number", "capacity", "status")
+    list_display = ("table_number", "capacity", "status", "get_reservation_dates")
     list_filter = ("status", "capacity",)
     search_fields = ("table_number",)
+
+    def get_reservation_dates(self, obj):
+        reservations = UserReservation.objects.filter(table=obj).order_by('date')
+        return ', '.join([f'{res.date} at {res.time}' for res in reservations])
+    get_reservation_dates.short_description = 'Reservations'
 
 
 admin.site.register(Table, TableAdmin)
