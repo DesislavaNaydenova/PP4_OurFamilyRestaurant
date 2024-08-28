@@ -21,41 +21,66 @@ class FormCreation(UserCreationForm):
 
 
 class UserReservationForm(forms.ModelForm):
-    # date = forms.DateField(widget=forms.DateInput(format='%Y-%m-%d'), input_formats=['%d-%m-%Y'])
     date = forms.DateField(
         widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}, format='%Y-%m-%d'),
         input_formats=['%d.%m.%Y', '%d-%m-%Y', '%Y-%m-%d']  
-    )
-    time = forms.ChoiceField(
-        widget=forms.Select(attrs={'class':'form-control'}),
-        choices=[]
     )
     
     class Meta:
         model = UserReservation
         fields = ['date', 'time', 'table', 'comment']
+        widgets = {
+            'time': forms.TimeInput(attrs={'type': 'time'}),
+        }
         
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
-        if 'date' in self.data:
-            try:
-                selected_date = datetime.strptime(self.data['date'], '%Y-%m-%d').date()
-                self.fields['time'].choices = self.get_time_choices(selected_date)
-            except (ValueError, TypeError):
-                slef.fields['time'].choices = []
+        # If date is provided, populate time choices based on opening hours
+        if 'selected_date' in self.data:
+            selected_date = self.data.get('selected_date')
+            self.fields['time'].choices = self.get_time_choices(selected_date)
 
-    def get_time_choices(selected_date):
-                day_of_week = selected_date.strftime('%A')
-                opening_hours = OpeningHour.objects.filter(day_of_week=day_of_week)
+    def get_time_choices(self, selected_date):
+        # Get day of week for selected date
+        day_of_week = selected_date.strftime('%A')
+        # Retrive opening hours for given day
+        opening_hours = OpeningHour.objects.filter(day_of_week=day_of_week)
+        # If no opening hours are available for the selected day, return an empty list
+        if not opening_hours.exists():
+            return []
 
-                time_choices = []
-                for hour in opening_hours:
-                    start_time = hour.open_time
-                    end_time = hour.close_time
-                    while start_time < end_time:
-                        time_choices.append((start_time, start_time.strftime('%H:%M')))
-                        start_time = (datetime.combine(datetime.today(), start_time) + timedelta(minutes=30)).time()
+        # Generate time slots within opening
+        time_choices = []
+        for hour in opening_hours:
+            start_time = hour.open_time
+            end_time = hour.close_time
+            while start_time < end_time:
+                # Check if table is availablefor the time
+                if not UserReservation.objects.filter(date=selected_date, time=start_time, table=self.data.get('table')).exists():
+                    time_choices.append((start_time.strftime('%H:%M'), start_time.strftime('%H:%M')))
+                start_time = (datetime.combine(datetime.today(), start_time) + timedelta(minutes=30)).time()
 
-                return time_choices
+        return time_choices
+
+    def clean_date(self):
+        date = self.cleaned_data['date']
+        day_of_week = date.strftime('%A')
+        opening_hours = OpeningHour.objects.filter(day_of_week=day_of_week)
+        
+        if not opening_hours.exists():
+            raise ValidationError(f'Our restaurant is closed on {day_of_week}s.')
+
+        return date
+
+    def clean_table(self):
+        table = self.cleaned_data.get('table')
+        date = self.cleaned_data.get('date')
+        time = self.cleaned_data.get('time')
+
+        if date and time:
+            if UserReservation.objects.filter(date=date, time=time, table=table).exists():
+                raise ValidationError(f'Table {table.table_number} is already reserved at {time} on {date}. Please, choose another table!')
+
+        return table
             

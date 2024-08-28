@@ -87,15 +87,15 @@ def user_reservation(request):
         else:
             return render(request, 'hello_alps/user_reservation.html', {'form':form})
             
-    form = UserReservationForm()
+    else:
+        form = UserReservationForm()
 
-    if 'date' in request.GET:
-        try:
-            selected_date = datetime.strptime(request.GET['date'], '%Y-%m-%d').date()
-            time_choices = get_time_choices(selected_date)
-            form.fields['time'].choices = time_choices
-        except ValueError:
-            messages.error(request, "Invalida date format.")
+        if 'date' in request.GET:
+            try:
+                selected_date = datetime.strptime(request.GET['date'], '%Y-%m-%d').date()
+                form.fields['time'].choices = form.get_time_choices(selected_date)
+            except ValueError:
+                messages.error(request, "Invalida date format.")
 
     return render(request, 'hello_alps/user_reservation.html', {'form': form})
     
