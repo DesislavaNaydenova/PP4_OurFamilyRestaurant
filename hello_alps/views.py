@@ -71,6 +71,9 @@ def user_reservation(request):
             formatted_date = datetime.strptime(date_str, '%d.%m.%Y').strftime('%Y-%m-%d')
             post_data['date'] = formatted_date
 
+        if 'reservation_id' in request.POST:
+            reservation = UserReservation.objects.get(pk=request.POST['reservation_id'])
+            form = UserReservationForm(post_data, isinstance=reservation)
 
         form = UserReservationForm(post_data)
 

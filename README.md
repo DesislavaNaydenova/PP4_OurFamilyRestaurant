@@ -345,6 +345,14 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 
 ![Success Modal Date an Time Fix](assets/images/success_modal_fix.png)
 
+5. When trying to edit the reservations time, the user gets an error message, that the table has already been reserved for the day.
+
+![Editing Reservatin Time](assets/images/edit_reservation_bug.png)
+
+- Modify the clean_table method in the UserReservationForm to check if the current reservation instance is the same as the one being edited.
+
+![Editing Reservatin Time Fix](assets/images/edit_reservation_fix.png)
+
 ### Unfixed Bugs
 
 
