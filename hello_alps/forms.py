@@ -77,14 +77,14 @@ class UserReservationForm(forms.ModelForm):
         table = self.cleaned_data.get('table')
         date = self.cleaned_data.get('date')
 
-        if date and time:
+        if date and table:
             reservattion_id = self.instance.pk
 
             conflicting_reservations = UserReservation.objects.filter(
                 date=date, table=table
                 ).exclude(pk=reservattion_id)
             if conflicting_reservations.exists():
-                raise ValidationError(f'Table {table.table_number} is already reserved at {time} on {date}. Please, choose another table!')
+                raise ValidationError(f'Table {table.table_number} is already reserved on {date}. Please, choose another table!')
 
         return table
 
