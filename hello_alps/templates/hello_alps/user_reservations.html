@@ -135,24 +135,32 @@
 </div>
 
 <!-- target the Modal to show automaticaly -->
+{% if reservation_success %}
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        {% if reservation_success %}
         var successModal = new bootstrap.Modal(document.getElementById('successModal'));
         successModal.show();
-        {% endif %}
-
-        {% if edit_success %}
-        var editModal = new bootstrap.Modal(document.getElementById('editModal'));
-        editModal.show();
-        {% endif %}
-
-        {% if cancel_warning %}
-        var cancelModal = new bootstrap.Modal(document.getElementById('cancelModal'));
-        cancelModal.show();
-        {% endif %}
     });
 </script>
+{% endif %}
+
+{% if edit_success %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var editModal = new bootstrap.Modal(document.getElementById('editModal'));
+        editModal.show();
+    });
+</script>
+{% endif %}
+
+{% if cancel_warning %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var cancelModal = new bootstrap.Modal(document.getElementById('cancelModal'));
+        cancelModal.show();
+    });
+</script>
+{% endif %}
 
 <!-- user_reservations.html content ends here -->
 {% endblock %}

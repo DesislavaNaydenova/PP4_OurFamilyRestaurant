@@ -66,3 +66,32 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
+// target the Modal to show automaticaly 
+document.addEventListener("DOMContentLoaded", function () {
+    var container = document.querySelector('.user_reservation');
+
+    if (container) {
+        // Log the data attributes for debugging
+        console.log('Reservation Success:', container.getAttribute('data-reservation-success'));
+        console.log('Edit Success:', container.getAttribute('data-edit-success'));
+        console.log('Cancel Warning:', container.getAttribute('data-cancel-warning'));}
+
+    var reservationSuccess = container.getAttribute('data-reservation-success');
+    if (reservationSuccess){
+        var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+        successModal.show();
+    }
+
+    var editSuccess = container.getAttribute('data-edit-success');
+    if (editSuccess){
+        var editModal = new bootstrap.Modal(document.getElementById('editModal'));
+        editModal.show();
+    }
+
+    var cancelWarning = container.getAttribute('data-cancel-warning');
+    if (cancelWarning){
+        var cancelModal = new bootstrap.Modal(document.getElementById('cancelModal'));
+        cancelModal.show();
+    }
+    })

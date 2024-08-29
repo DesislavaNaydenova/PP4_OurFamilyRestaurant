@@ -48,19 +48,19 @@
 </div>
 
 <!-- target the Modal to show automaticaly -->
+{% if reservation_success %}
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        {% if reservation_success %}
         var successModal = new bootstrap.Modal(document.getElementById('successModal'));
         successModal.show();
 
         var modalElement = document.getElementById('successModal');
         modalElement.addEventListener('hidden.bs.modal', function() {
-            window.location.href = '{% url 'index' %}';
+            window.location.href = '{% url "index" %}';
         });
-        {% endif %}
     });
 </script> 
+{% endif %}
 
 <!-- guest_reservation.html content ends here -->
 {% endblock %}
