@@ -1,10 +1,39 @@
 # Our Family Restaurant
 
-Our Family Restaurant website is designed to be fully responsive, providing an optimal viewing experience on a wide range of devices. Visitors can explore our charming hut nestled in the heart of the Alps, with high-quality images showcasing the restaurant, our delicious meals, and the stunning natural surroundings. The website features an easy-to-navigate menu overview and offers the convenience of making online reservations. Additionally, visitors can find our location and contact details to plan their visit with ease.
+### Overview
+The Our Family Restaurant website is designed to provide a comprehensive and user-friendly experience for both our customers and staff. Built with a focus on ease of use and functionality, this platform offers a range of features aimed at enhancing your dining experience and streamlining restaurant operations.
 
-"👩🏻‍💻 View an example of this section [here](https://github.com/kera-cudmore/Bully-Book-Club#bully-book-club-website)"
+### Key Features
 
-Add a Blurb about the site here, what does it do, why did you build it?
+1. Online Reservations:
+
+  * Guest Reservations: Allow customers to make reservations directly from the website. Users can select their preferred date, time, and table without needing to call the restaurant. The system ensures table availability and prevents double-booking.
+  * Admin Reservations Management: Admins can view, edit, and manage reservations through a secure admin interface. This feature helps in tracking and organizing reservations efficiently.
+
+2. Dynamic Menu Management:
+
+  * Menu Display: Showcases an up-to-date menu with detailed descriptions and pricing. Customers can view the menu online before their visit.
+  * Admin Menu Management: Admins can easily add, update, or remove menu items using an intuitive backend interface, ensuring that the menu remains current.
+
+3. Opening Hours and Table Management:
+
+  * Opening Hours: Clearly display the restaurant’s operating hours for each day of the week.
+  * Table Availability: Track and manage table status to ensure optimal seating arrangements and avoid conflicts.
+4. Customer Interaction:
+
+  * Feedback and Comments: Guests can leave comments or special requests with their reservations. This feedback helps in personalizing their dining experience.
+  * Contact Information: Provides clear and accessible contact details, including a Google Maps integration for easy location.
+5. Admin Dashboard:
+
+  * Reservation Overview: Admins have a comprehensive view of all reservations, with options to filter by date, time, and table.
+  * Table Status Management: Easily update table statuses to reflect current availability, making table management straightforward.
+6. Responsive Design:
+
+  * The website is designed to be fully responsive, ensuring that it works seamlessly across different devices and screen sizes.
+### Purpose
+The Our Family Restaurant website was created to modernize and enhance the dining experience by integrating convenient online features and efficient management tools. It simplifies the reservation process for customers, making it more accessible and less time-consuming. For restaurant staff, it provides an organized system for managing reservations, updating menus, and maintaining table availability, thereby improving overall operational efficiency.
+
+We hope that this website serves as a valuable resource for both our guests and our team, making every visit to Our Family Restaurant enjoyable and hassle-free.
 
 Add an image of the finished site here. I like to use [amiresponsive](https://ui.dev/amiresponsive) to get an image of my site on all device sizes, and amiresponsive allows you to click links on the page and scroll, so each device can show a different element of your site.
 
@@ -352,6 +381,14 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 - Modify the clean_table method in the UserReservationForm to check if the current reservation instance is the same as the one being edited.
 
 ![Editing Reservatin Time Fix](assets/images/edit_reservation_fix.png)
+
+6. It was possible to reserve a specific table for every hour during the open hours, but we don't want that.
+
+![Double reservation on one day](assets/images/table_reservation_bug.png)
+
+- Change the clean_table method in the UserReservationForm, so that a table can not be reserved more than once a day.
+
+![Double reservation on one day not possible](assets/images/table_reservation_fix.png)
 
 ### Unfixed Bugs
 
