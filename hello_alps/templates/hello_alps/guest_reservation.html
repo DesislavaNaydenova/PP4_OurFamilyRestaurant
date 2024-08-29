@@ -19,10 +19,48 @@
                     </form>
                 </div>
                 <p class="text-center">Thank You for choosing our family restaurant!</p>
+                {% if reservation_success %}
+                <!-- Success Modal -->
+                <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title text-center" id="successModalLabel">Your reservation has been successful!
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body text-center">
+                                <h6>Thank you for making a reservation. We look forward to serving you!</h6>
+                                <p>Your reservation is for: {{ reservation_date}} at {{ reservation_time }}</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-pimary" data-bs-dismiss="modal">Colse</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
             </div>
         </div>
     </div>
 </div>
+
+<!-- target the Modal to show automaticaly -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        {% if reservation_success %}
+        var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+        successModal.show();
+
+        var modalElement = document.getElementById('successModal');
+        modalElement.addEventListener('hidden.bs.modal', function() {
+            window.location.href = '{% url 'index' %}';
+        });
+        {% endif %}
+    });
+</script> 
 
 <!-- guest_reservation.html content ends here -->
 {% endblock %}

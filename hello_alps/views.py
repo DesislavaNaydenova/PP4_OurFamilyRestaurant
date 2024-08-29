@@ -66,14 +66,23 @@ def guest_reservation(request):
             request.session['reservation_date'] = reservation.date.strftime('%Y.%m.%d')
             request.session['reservation_time'] = reservation.time.strftime('%H:%M')
 
-            return redirect('index')
+            return redirect('guest_reservation')
         else:
             return render(request, 'hello_alps/guest_reservation.html', {'form':form})
             
     else:
         form = GuestReservationForm()
 
-    return render(request, 'hello_alps/guest_reservation.html', {'form': form})
+    reservation_success = request.session.pop('reservation_success', False)
+    reservation_date = request.session.pop('reservation_date', '')
+    reservation_time = request.session.pop('reservation_time', '')
+
+    return render(request, 'hello_alps/guest_reservation.html', {
+        'form': form,
+        'reservation_success': reservation_success,
+        'reservation_date': reservation_date,
+        'reservation_time': reservation_time,
+        })
 
 
 # user_reservation.html View
