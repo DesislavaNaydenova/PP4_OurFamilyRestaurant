@@ -7,7 +7,19 @@
 <div class="container px-4 px-lg-5">
     <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
-            <p>Guest</p>
+            <div class="guest_reservation mt-5 mx-5">
+                <h1 class="text-center">Make a Reservation</h1>
+                <hr>
+                <div class="d-flex justify-content-center">
+                    <form method="post" class="text-center col-md-8 col-lg-8 col-xl-7"
+                        action="{% url 'guest_reservation' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary btn-lg text-uppercase">Reserve</button>
+                    </form>
+                </div>
+                <p class="text-center">Thank You for choosing our family restaurant!</p>
+            </div>
         </div>
     </div>
 </div>

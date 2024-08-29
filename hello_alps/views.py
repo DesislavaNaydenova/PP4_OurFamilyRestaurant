@@ -8,7 +8,7 @@ from django.http import HttpResponseRedirect
 from django.db.models import Case, When, Value, IntegerField
 from django.urls import reverse_lazy
 from .models import Menu, OpeningHour, UserReservation, About
-from .forms import FormCreation, UserReservationForm
+from .forms import FormCreation, UserReservationForm, GuestReservationForm
 from datetime import datetime
 
 
@@ -57,7 +57,23 @@ def reservations(request):
 
 # guest_reservation.html View
 def guest_reservation(request):
-    return render(request, 'hello_alps/guest_reservation.html')
+    if request.method == 'POST':
+        form = GuestReservationForm(request.POST)
+        if form.is_valid():
+            reservation = form.save()
+
+            request.session['reservation_success'] = True
+            request.session['reservation_date'] = reservation.date.strftime('%Y.%m.%d')
+            request.session['reservation_time'] = reservation.time.strftime('%H:%M')
+
+            return redirect('index')
+        else:
+            return render(request, 'hello_alps/guest_reservation.html', {'form':form})
+            
+    else:
+        form = GuestReservationForm()
+
+    return render(request, 'hello_alps/guest_reservation.html', {'form': form})
 
 
 # user_reservation.html View
