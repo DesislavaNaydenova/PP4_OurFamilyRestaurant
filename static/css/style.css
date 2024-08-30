@@ -10815,3 +10815,7 @@ header.masthead .post-heading .meta a {
 div#map {
   min-height: 360px;
 }
+
+.welcome {
+  margin-bottom: 3rem;
+}

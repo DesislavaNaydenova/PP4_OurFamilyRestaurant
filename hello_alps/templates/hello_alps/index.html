@@ -2,60 +2,83 @@
 {% load static %}
 {% block content %}
 
-<!-- index.html content starts here -->
-
-<div class="container px-4 px-lg-5">
-    <div class="row gx-4 gx-lg-5 justify-content-center">
-        <div class="col-md-10 col-lg-8 col-xl-7">
-            <!-- Button link Menu -->
-            <div class="d-grid gap-2 mb-4">
-                <a href="{% url 'menu_list'  %}" class="btn btn-primary btn-lg text-uppercase">Menu</a>
+<div class="container-fluid p-0 welcome">
+    <div class="row justify-content-center g-0 align-items-stretch">
+        <div class="col-11 col-md-5 left-section p-0 d-flex flex-column">
+            <div class="d-flex justify-content-center align-items-center text-center mx-auto my-4 p-3 flex-grow-1">
+                <h3 class="display-6">Feel free to taste the spirit of 2 continents, 3 countries and <strong>One
+                        Love!</strong></h3>
             </div>
-            {% if user.is_authenticated %}
-            <!-- Button link Reservation -->
-            <div class="d-grid gap-2 mb-4">
-                <a href="{% url 'user_reservation' %}" class="btn btn-primary btn-lg text-uppercase">Make a Reservation</a>
+            <div class="d-grid mb-2 p-0">
+                <a href="{% url 'menu_list' %}" class="btn btn-light btn-lg text-uppercase p-0 m-0">Menu</a>
             </div>
-            <!-- Button link View upcoming reservations -->
-            <div class="d-grid gap-2 mb-4">
-                <a href="{% url 'user_reservations' %}" class="btn btn-primary btn-lg text-uppercase">Upcoming Reservations</a>
-            </div>
-            <div class="d-grid gap-2 mb-4 ">
-                <form action="{% url 'logout' %}" method="post">
-                    {% csrf_token %}
-                </form>
-                <a href="{% url 'logout' %}" class="btn btn-primary btn-lg text-uppercase">Log Out</a>
-            </div>  
-            {% else %}
-            <!-- Button link Reservation -->
-            <div class="d-grid gap-2 mb-4">
-                <a href="{% url 'reservations' %}" class="btn btn-primary btn-lg text-uppercase">Make a Reservation</a>
-            </div>            
-            {% endif %}
-             <!-- Button link About Our Family -->
-            <div class="d-grid gap-2 mb-4">
-                <a href="{% url 'about' %}" class="btn btn-primary btn-lg text-uppercase">About Our Family</a>
-            </div>
-             <!-- Button link Location -->
-             <div class="d-grid gap-2 mb-4">
-                <a href="{% url 'contact' %}" class="btn btn-primary btn-lg text-uppercase">Contact</a>
-            </div>
-            <!-- Opening Hours Section -->
-            <div class="opening-hours mt-5">
-                <h2 class="text-center">Opening Hours</h2>
-                <ul class="list-unstyled opening-hours-list">
-                    {% for time in opening_hours %}
-                    <li>
-                        <strong>{{ time.get_day_of_week_display }}:</strong> {{ time.open_time|date:"H:i" }} : {{ time.close_time|date:"H:i" }}
-                    </li>
-                    {% endfor %}
-                </ul>
-                <hr>
-                <p class="text-center">Thank You for choosing our family restaurant!</p>
+        </div>
+        <div class="col-11 col-md-7 right-section p-0 -flex align-items-stretch">
+            <div id="carouselExampleSlidesOnly" class="carousel slide w-100" data-bs-ride="carousel">
+                <div class="carousel-inner h-100">
+                    <div class="carousel-item active">
+                        <img src="{% static 'images/cofe.png' %}" class="d-block w-100 h-100"
+                            alt="a picture of a cup of coffee">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'images/garden.png' %}" class="d-block w-100 h-100"
+                            alt="the view of our garden">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'images/pizza.png' %}" class="d-block w-100 h-100"
+                            alt="our home made pizza">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<div class="container-fluid p-0 ">
+    <div class="row justify-content-center g-0 align-items-stretch">
+        <div class="col-11 col-md-7 left-section p-0 -flex align-items-stretch">
+            <div id="carouselExampleSlidesOnly" class="carousel slide w-100" data-bs-ride="carousel">
+                <div class="carousel-inner h-100">
+                    <div class="carousel-item active">
+                        <img src="{% static 'images/cofe.png' %}" class="d-block w-100 h-100"
+                            alt="a picture of a cup of coffee">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'images/garden.png' %}" class="d-block w-100 h-100"
+                            alt="the view of our garden">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="{% static 'images/pizza.png' %}" class="d-block w-100 h-100"
+                            alt="our home made pizza">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-11 col-md-5 right-section p-0 welcome d-flex flex-column">
+            <div class="d-flex justify-content-center align-items-center text-center mx-auto my-4 p-3 flex-grow-1">
+                <h3 class="display-6">Feel free to taste the spirit of 2 continents, 3 countries and 
+                    <strong>One Love!</strong></h3>
+            </div>
+            <div class="d-grid mb-2 p-0">
+                <a href="{% url 'menu_list' %}" class="btn btn-light btn-lg text-uppercase p-0 m-0">Menu</a>
+            </div>
+        </div>        
+    </div>
+</div>
 
-<!-- index.html content ends here -->
-{% endblock %}
+<!-- Opening Hours Section -->
+<div class="opening-hours mt-5">
+    <h2 class="text-center display-5">Opening Hours</h2>
+    <ul class="list-unstyled opening-hours-list">
+        {% for time in opening_hours %}
+        <li>
+            <strong>{{ time.get_day_of_week_display }}:</strong> {{ time.open_time|date:"H:i" }} :
+            {{ time.close_time|date:"H:i" }}
+        </li>
+        {% endfor %}
+    </ul>
+    <hr>
+    <p class="text-center">Thank You for choosing our family restaurant!</p>
+</div>
+
+            <!-- index.html content ends here -->
+            {% endblock %}
