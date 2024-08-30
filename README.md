@@ -57,7 +57,6 @@ If you want to add optional [shields.io](https://shields.io) badges to your READ
 * [Features](#features)
   * [General Features on Each Page](#general-features-on-each-page)
   * [Future Implementations](#future-implementations)
-  * [Accessibility](#accessibility)
 
 * [Database Schema](#database-schema)
   * [Entity-Relationship Diagram](#entity-relationship-diagram)
@@ -73,6 +72,15 @@ If you want to add optional [shields.io](https://shields.io) badges to your READ
     * [How to Clone](#how-to-clone)
 
 * [Testing](#testing)
+  * [AUTOMATED TESTING](#automated-testing)
+    * [W3C Validator](#w3c-validator)
+    * [JavaScript Validator](#javascript-validator)
+    * [Python Validator](#python-validator)
+    * [Lighthouse](#lighthouse)
+    * [WAVE Testing](#wave-testing)
+  * [MANUAL TESTING](#manual-testing)
+    * [Testing User Stories](#testing-user-stories)
+    * [Full Testing](#full-testing)
 
 * [Bugs](#bugs)
   * [Fixed Bugs](#fixed-bugs)
@@ -103,25 +111,16 @@ See our [GitHub User Stories](https://github.com/users/DesislavaNaydenova/projec
 
 ## Design
 
-👩🏻‍💻 View an example of a completed design section [here](https://github.com/kera-cudmore/earth-day-hackathon-2022#Design)
+The design of this project is crafted to ensure a modern, user-friendly, and visually appealing experience, it maintains consistency across all pages and components to provide a unified and professional look. Reusable design elements and patterns are applied to ensure that the interface is predictable and familiar to users.
 
 ### Colour Scheme
 
-Add all information about your colour scheme for your site here. You can explain why you choose the colours you did?
-
-I like to include a palette of the colour scheme here, my favourite site for creating a colour palette is [coolors](https://coolors.co/), but there are lots of other sites that also do the same thing, like [ColorSpace](https://mycolor.space/?hex=%23F5F5F5&sub=1), [Muzli Colors](https://colors.muz.li/), [Adobe Colour Wheel](https://color.adobe.com/create/color-wheel) and [Canva](https://www.canva.com/colors/color-palette-generator/) to name a few.
+The color scheme for this project is inspired by the base palette provided by (Start Bootstrap)[https://startbootstrap.com/]
 
 ### Typography
 
-If you've imported fonts to use in your project, add some information about them here. You can include information like:
-
-Why did you choose the font you have?
-Is this an accessibly friendly font?
-What weights have you included?
-
-I also like to include an image of the fonts chosen as a reference.
-
-[Google Fonts](https://fonts.google.com/) is a popular choice for importing fonts to use in your project, as it doesn't require you to download the fonts to use them.
+For this project, I used the typography base from (Start Bootstrap)[https://startbootstrap.com/]. Start Bootstrap provides a clean and modern design foundation, which includes a well-thought-out typographic system.
+The project utilizes the font stack provided by Start Bootstrap, which includes popular web-safe fonts and Google Fonts. This ensures consistent and readable text across different devices and browsers.
 
 ### Imagery
 
@@ -151,19 +150,17 @@ I then like to add a screenshot of each page of the site here, i use [amirespons
 
 ### Future Implementations
 
-What features would you like to implement in the future on your site? Would you like to add more pages, or create login functionality? Add these plans here.
+1. Native Forms and Pages for Admin Actions: In future updates, we plan to integrate native forms and dedicated pages for managing administrative tasks directly within the website. This will include:
+- Admin Dashboard: A centralized dashboard where administrators can easily manage reservations, view booking statistics, and handle user inquiries.
+- Reservation Management: Forms and pages for reviewing, editing, and canceling reservations.
+- User Management: Interfaces for managing user accounts, including the ability to view, edit, and deactivate user accounts as necessary.
+- Content Management: Tools for updating and managing menu items, gallery images, and other content on the website without needing direct access to the codebase.
 
-### Accessibility
+2. Family Gallery: The website includes a gallery showcasing family photos. This section highlights the personal and inviting atmosphere of the restaurant, adding a personal touch to the dining experience.
 
-Be an amazing developer and get used to thinking about accessibility in all of your projects!
+3. Surrounding Area Photos: To enhance the connection with the local area, the website features a gallery of photos depicting the surrounding environment. This includes scenic views and notable landmarks near the restaurant. 
 
-This is the place to make a note of anything you have done with accessibility in mind. Some examples include:
-
-Have you used icons and added aria-labels to enable screen readers to understand these?
-Have you ensured your site meets the minimum contrast requirements?
-Have you chosen fonts that are dyslexia/accessible friendly?
-
-Code Institute have an amazing channel for all things accessibility (a11y-accessibility) I would highly recommend joining this channel as it contains a wealth of information about accessibility and what we can do as developers to be more inclusive.
+4. Menu Item Images: Each menu item on the restaurant’s website is enhanced with high-quality images. These images are displayed alongside the item descriptions to give customers a visual preview of the dishes. This feature improves the user experience by making the menu more engaging and helping customers make more informed choices.
 
 ## Database Schema
 
@@ -206,41 +203,33 @@ Make a note here of all the languages used in creating your project. For the fir
 
 ## Deployment & Local Development
 
-### Deployment to Heroku
+### Deployment to Heroku (From Code Institute Lessons)
 
-#### Create the Heroku app
+#### Create the Heroku app 
 1. Navigate to your Heroku dashboard and create a new app with a unique name.
 
 2. Click on the Settings tab and reveal the config vars. Add a key of DISABLE_COLLECTSTATIC and a value of 1 and click Add.
 
 #### Update your code for deployment
 3. Install a production-ready webserver for Heroku.
-
 pip3 install gunicorn~=20.1 
 Add gunicorn==20.1.0 to the requirements.txt file with:
-
 pip3 freeze --local > requirements.txt
 Note: gunicorn is a production equivalent of the manage.py runserver used in development but with speed and security optimisation.
 
 4. Create a file named Procfile at the root directory of the project (same directory as requirements.txt).
-
 Note: The Procfile has no file extension.
 
 5. In the Procfile, declare this is a web process followed by the command to execute your Django project.
-
 web: gunicorn my_project.wsgi
 This assumes your project is named my_project.
-
 Note the space after the colon.
-
 Note: gunicorn my_project.wsgi is the command heroku will use to start the server. It works similarly to python3 manage.py runserver.
 
 6. Open the my_project/settings.py file and replace DEBUG=True with DEBUG=False.
-
 Note the comment regarding security in production.
 
-7. Also, in settings.py we need to append the Heroku hostname to the ALLOWED_HOSTS list, in addition to the local host we added in the last lesson.
-
+7. Also, in settings.py we need to append the Heroku hostname to the ALLOWED_HOSTS list
 ,'.herokuapp.com'
 Note: Remember the comma and the dot before herokuapp.
 
@@ -250,17 +239,14 @@ Note: Remember the comma and the dot before herokuapp.
 9. Now, let's return to the Heroku dashboard, and in your app, click on the Deploy tab.
 
 10. In the Deployment method section enable GitHub integration by clicking on Connect to GitHub.
-
 If you have not deployed a project from GitHub before then, you will be asked to authenticate with GitHub.
 
 11. Start typing your project repo name into the search box and click Search. A list of repositories from your GitHub account should appear. Click on the GitHub repo you want to deploy from.
 
 12. Scroll to the bottom of the page and click Deploy Branch to start a manual deployment of the main branch.
-
 You can view the build output in the application's Activity tab in the dashboard.
 
 13. Click on Open app to view your deployed project.
-
 Note: You will have to append /hello to the browser URL just as you did locally to see your view output.
 
 14. Open the Resources tab and choose an eco dyno. This dyno is a lightweight container to run your project.
@@ -268,7 +254,6 @@ Note: You will have to append /hello to the browser URL just as you did locally 
 15. Open the Resources tab and verify there is no existing Postgres database add-on. If there is one you can destroy it. Hello, World does not use a database and if not destroyed can result in usage costs. If there is a database add-on select Delete Add-on to remove it.
 
 16. Click on Open app to view your deployed project.
-
 Note: You will have to append /hello to the browser URL just as you did locally to see your view output.
 
 ### Local Development
@@ -286,8 +271,8 @@ Ensure you have the following software installed on your machine:
 Open your terminal and run the following command to clone the repository:
 bash
 git clone https://github.com/your-username/your-project.git
-
 Replace https://github.com/your-username/your-project.git with the actual URL of your repository.
+
 2. Navigate to the project directory
 Change into the project directory:
 bash
@@ -297,7 +282,6 @@ cd your-project
 Run the following command to install the necessary dependencies:
 bash
 npm install
-
 If your project uses another package manager like Yarn, use:
 bash
 yarn install
@@ -306,37 +290,72 @@ yarn install
 Create a .env file in the root directory of the project and add the necessary environment variables. You can use the provided .env.example as a reference:
 bash
 cp .env.example .env
-
 Edit the .env file to include your specific configuration values.
+
 5. Set up the database
 If your project requires a database, set it up by running the migration and seed scripts. For example, if you're using a Node.js project with Sequelize:
 bash
 npx sequelize-cli db:migrate
 npx sequelize-cli db:seed:all
-
 Adjust the commands according to the ORM or database tool your project uses.
 Run the development server
+
 6. Start the development server with the following command:
 bash
 npm start
-
 Or, if your project uses a different command, replace npm start with the appropriate command.
+
 7. Access the application
 Open your web browser and navigate to http://localhost:3000 (or the port specified in your project) to view the running application.
 
 #### How to Fork
 
-Place instructions on how to fork your project here.
+1. Navigate to the Repository:
+Go to the GitHub repository page for the project you want to fork.
+
+2. Click the Fork Button:
+In the top-right corner of the page, click the Fork button. This will create a copy of the repository under your GitHub account.
+
+3. Select Your Account:
+If you belong to multiple organizations, you may need to choose where you want to fork the repository (e.g., your personal account or an organization).
+
+4. Access Your Fork:
+After forking, you can find the forked repository in your GitHub account’s repositories list. You can now make changes to this copy of the repository.
 
 #### How to Clone
 
-Place instructions on how to clone your project here.
+1. Navigate to Your Repository:
+Go to the repository page on GitHub (either the original or your forked version).
+
+2. Copy the Repository URL:
+Click on the Code button (usually green) and copy the URL provided (either HTTPS or SSH).
+
+3. Open Your Terminal:
+Open a terminal or command prompt on your local machine.
+
+4. Run the Clone Command:
+Use the git clone command followed by the URL you copied.
+- git clone + the actual URL of the repository.
+
+5. Navigate to the Project Directory:
+Change to the directory of the cloned project: cd your-repository
+
+6. Install Dependencies (if applicable):
+Follow any additional setup instructions provided in the repository’s README.md file to install necessary dependencies and get the project running.
 
 ## Testing
 
-Start as you mean to go on - and get used to writing a TESTING.md file from the very first project!
+### AUTOMATED TESTING
 
-Testing requirements aren't massive for your first project, however if you start using a TESTING.md file from your first project you will thank yourself later when completing your later projects, which will contain much more information.
+#### W3C Validator
+
+[W3C](https://validator.w3.org/) was used to validate the HTML on all pages of the website. It was also used to validate the CSS. I have checked the HTML via direct input and also by inspecting the page source and running this through the validator.
+
+* [Index Page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbookworm2022.herokuapp.com%2F) - No errors or warnings.
+* [Register Page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbookworm2022.herokuapp.com%2Fregister) - No errors or warnings.
+* [Login Page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbookworm2022.herokuapp.com%2Flogin) - No errors or warnings.
+* [Profile Page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbookworm2022.herokuapp.com%2Fprofile%3Fusername%3Dadmin) - No errors or warnings.
+
   
 Use this part of the README to link to your TESTING.md file - you can view the example TESTING.md file [here](milestone1-testing.md)
 
@@ -401,9 +420,8 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 - For Django Documentation: [Django Authentication](https://docs.djangoproject.com/en/5.1/topics/auth/)
 - For Django Tutorials: [Django Tutorials](https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django)
 - For the FavIcon: [Icons8](https://icons8.com/)
-- For date and time picker: [flatpickr](https://flatpickr.js.org/)
 - For Map in the Contact template: [GoogleMaps](https://www.google.com/map)
-- For the code needed to add the map cluster: [CodeInstitute](https://learn.codeinstitute.net/) and [jsfiddle.net/](https://jsfiddle.net/)
+
 
 
 👩🏻‍💻 View an example of a completed Credits section [here](https://github.com/kera-cudmore/BookWorm#Credits)
@@ -412,8 +430,11 @@ The Credits section is where you can credit all the people and sources you used 
 
 ### Code Used
 
-
 - For the about page: [Code Instituse Solutions](https://github.com/Code-Institute-Solutions/blog/tree/main/10_create_about_app/about)
+
+- For the map cluster: [CodeInstitute](https://learn.codeinstitute.net/) and [jsfiddle.net/](https://jsfiddle.net/)
+
+- For date and time picker: [flatpickr](https://flatpickr.js.org/)
 
 ### Content
 
@@ -427,4 +448,16 @@ The Credits section is where you can credit all the people and sources you used 
   
 ###  Acknowledgments
 
-If someone helped you out during your project, you can acknowledge them here! For example someone may have taken the time to help you on slack with a problem. Pop a little thank you here with a note of what they helped you with (I like to try and link back to their GitHub or Linked In account too). This is also a great place to thank your mentor and tutor support if you used them.
+I'd like to thank:
+
+- CodeInstitute for their invaluable support and resources, which were crucial in developing this project.
+
+- My Code Institute Mentor Can Sucullu.
+
+- My Family for their encouragement and patience throughout the journey.
+
+- The Restaurant Owner for their inspiration and support in creating this platform.
+
+- The fantastic Tutor Support team at Code Institute.
+
+Your help and support made this project possible. Thank you!
