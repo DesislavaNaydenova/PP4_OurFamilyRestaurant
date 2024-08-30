@@ -67,48 +67,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-/**
- * @license
- * Copyright 2019 Google LLC. All Rights Reserved.
- * SPDX-License-Identifier: Apache-2.0
- import { MarkerClusterer } from "https://cdn.skypack.dev/@googlemaps/markerclusterer@2.3.1";
-*/
+
 async function initMap() {
-  // Request needed libraries.
-  const { Map, InfoWindow } = await google.maps.importLibrary("maps");
-  const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary(
-    "marker",
-  );
-  const map = new Map(document.getElementById("map"), {
-    zoom: 12,
-    center: { 
+    // Request needed libraries.
+    const { Map } = await google.maps.importLibrary("maps");
+    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+    const map = new Map(document.getElementById("map"), {
+      center: { 
         lat:47.394621679394675, 
-        lng: 11.910880605714658 
-    },
-    mapId: "DEMO_MAP_ID",
-  });
-  const infoWindow = new InfoWindow({
-    content: "",
-    disableAutoPan: true,
-  });
-  // Create an array of alphabetical characters used to label the markers.
-  const labels = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-  const locations = [
-    { lat:47.394621679394675, 
-      lng: 11.910880605714658  },
-  ];
-  // Add some markers to the map.
-  const markers = locations.map(function(location, i){
-    return new AdvancedMarkerElement({
-        position: location,
-        label: labels[i % labels.length]
+        lng: 11.910880605714658
+       },
+      zoom: 14,
+      mapId: "8f64f417a2a4c76c",
     });
-  }); 
+    const marker = new AdvancedMarkerElement({
+      map,
+      position: { 
+        lat:47.394621679394675, 
+        lng: 11.910880605714658
+       },
+    });
+  }
   
-  new MarkerClusterer({markers, map});
-}
-
-
-
-initMap();
+  initMap();
