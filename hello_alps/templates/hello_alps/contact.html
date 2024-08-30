@@ -9,7 +9,7 @@
         <div class="col-md-10 col-lg-8 col-xl-7">
             <h1 class="text-center">We are allways happy to see You!</h1>
             <hr>
-            <h2 class="text-center">Visit us: Scheffachberg 5A </h2>
+            <h2 class="text-center">Visit us: Kolber 4 </h2>
             <hr>
             <h2 class="text-center">6235 Reith Im Alpbachtal</h2> 
             <hr>
@@ -17,10 +17,24 @@
             <hr>
             <h2 class="text-center">Email us: ourrestaurant@gmail.com</h2>   
             <hr>
+            <div id="map" ></div>
             <p class="text-center">Thank You for choosing our family restaurant!</p>    
         </div>
     </div>
 </div>
+<!--<script>
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 3,
+            center: {
+                47.394621679394675, 11.910880605714658
+            }
+        });
+    }
+</script>-->
+<script>(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
+    ({key: "AIzaSyB2QcD37hj27nwAZ2UF3-Z9LhgOeANq_mg", v: "weekly"});
+</script>
 
 <!-- about.html content ends here -->
 {% endblock %}
