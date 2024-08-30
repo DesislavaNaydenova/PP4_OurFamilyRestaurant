@@ -66,27 +66,3 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
-
-
-async function initMap() {
-    // Request needed libraries.
-    const { Map } = await google.maps.importLibrary("maps");
-    const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-    const map = new Map(document.getElementById("map"), {
-      center: { 
-        lat:47.394621679394675, 
-        lng: 11.910880605714658
-       },
-      zoom: 14,
-      mapId: "8f64f417a2a4c76c",
-    });
-    const marker = new AdvancedMarkerElement({
-      map,
-      position: { 
-        lat:47.394621679394675, 
-        lng: 11.910880605714658
-       },
-    });
-  }
-  
-  initMap();
