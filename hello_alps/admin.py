@@ -7,11 +7,11 @@ import bleach
 
 
 class MenuAdmin(SummernoteModelAdmin):
-    #summernote_fields = ("name",)
-    #def name_preview(self, obj):
-        #return bleach.clean(obj.name, tags=[], strip=True)
-    #name_preview.short_name = "name (preview)"
-    list_display = ("name","description", "price",)
+    summernote_fields = ("name",)
+    def name_preview(self, obj):
+        return bleach.clean(obj.name, tags=[], strip=True)
+    name_preview.short_name = "name (preview)"
+    list_display = ("name_preview","description", "price",)
     list_filter = ("categories",)
     search_fields = ("name", "categories")
 

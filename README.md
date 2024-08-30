@@ -411,6 +411,12 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 
 ### Unfixed Bugs
 
+1. Due to the Summernote styling an error is being shown when validating the URL of the menu_list
+
+![URL validation error](assets/images/url_validation_summernote_bug.png)
+
+- Removed the h4 elememt, in order to prevent the first error, but the styling from summernote doesn't change. 
+
 
 ## Credits
 

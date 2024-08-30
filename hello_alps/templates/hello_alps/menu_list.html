@@ -13,7 +13,7 @@
                 <ul class="list-unstyled menu-list">
                     {% for item in items %}
                     <li>
-                        <h4>{{ item.name|safe }}</h4>{{ item.description|safe }} {{ item.price }}€
+                        {{ item.name|safe }} {{ item.description|safe }} {{ item.price }}€
                     </li>
                     {% endfor %}
                 </ul>
