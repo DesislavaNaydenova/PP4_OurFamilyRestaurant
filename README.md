@@ -417,6 +417,12 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 
 - Removed the h4 elememt, in order to prevent the first error, but the styling from summernote doesn't change. 
 
+2. The user gets an error message after trying to submit the reservation.
+
+![Date Error Message](assets/images/closed_date_alert.png)
+
+- Due to lack of time we weren't able to change the code.
+
 
 ## Credits
 
