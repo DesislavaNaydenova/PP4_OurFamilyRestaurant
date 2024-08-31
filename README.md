@@ -349,10 +349,10 @@ Follow any additional setup instructions provided in the repository’s README.m
 
 #### W3C Validator
 
-[W3C](https://validator.w3.org/) was used to validate the HTML on all pages of the website. It was also used to validate the CSS. I have checked the HTML via direct input and also by inspecting the page source and running this through the validator.
+[W3C](https://validator.w3.org/) was used to validate the URL on all pages of the website. It was also used to validate the CSS. 
 
-* [Index Page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbookworm2022.herokuapp.com%2F) - No errors or warnings.
-* [Register Page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbookworm2022.herokuapp.com%2Fregister) - No errors or warnings.
+* [Menu Page](https://pp4-our-family-restaurant-8fbc3211d08d.herokuapp.com/menu_list) - There is an error coming from the summernote editor, that I coldn't fix and addet to the unfixed bugs
+* [Edit reservation Page](https://pp4-our-family-restaurant-8fbc3211d08d.herokuapp.com/accounts/login/?next=/edit_reservation/45/) - There is a Warning about adding a lang attribute to the html start tag to declare the language of this document, but it exists in the base.html.
 * [Login Page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbookworm2022.herokuapp.com%2Flogin) - No errors or warnings.
 * [Profile Page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbookworm2022.herokuapp.com%2Fprofile%3Fusername%3Dadmin) - No errors or warnings.
 
@@ -426,7 +426,9 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 
 ![URL validation error](assets/images/url_validation_summernote_bug.png)
 
-- Removed the h4 elememt, in order to prevent the first error, but the styling from summernote doesn't change. 
+- Removed the h4 elememt, in order to prevent the first error, but the styling from summernote doesn't change.
+
+![URL validation error 1](assets/images/url_validation_summernote_bug1.png)
 
 2. The user gets an error message after trying to submit the reservation.
 
