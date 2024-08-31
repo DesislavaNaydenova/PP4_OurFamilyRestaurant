@@ -409,6 +409,14 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 
 ![Double reservation on one day not possible](assets/images/table_reservation_fix.png)
 
+7. Getting an attribute error when trying to make a guest reservation.
+
+![Attribute Error](assets/images/for-attribute-error.png)
+
+- Added autocomplete and id to the guest reservation form.
+
+![Attribute Error Fix](assets/images/for-attribute-error-fix.png)
+
 ### Unfixed Bugs
 
 1. Due to the Summernote styling an error is being shown when validating the URL of the menu_list

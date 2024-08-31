@@ -22,7 +22,7 @@ class FormCreation(UserCreationForm):
 
 class UserReservationForm(forms.ModelForm):
     date = forms.DateField(
-        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}, format='%Y-%m-%d'),
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control', 'id': 'date'}, format='%Y-%m-%d'),
         input_formats=['%d.%m.%Y', '%d-%m-%Y', '%Y-%m-%d']  
     )
     
@@ -30,7 +30,7 @@ class UserReservationForm(forms.ModelForm):
         model = UserReservation
         fields = ['date', 'time', 'table', 'comment']
         widgets = {
-            'time': forms.TimeInput(attrs={'type': 'time'}),
+            'time': forms.TimeInput(attrs={'type': 'time', 'id': 'time'}),
         }
         
     def __init__(self, *args, **kwargs):
