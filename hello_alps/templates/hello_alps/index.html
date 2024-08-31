@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="col-11 col-md-7 right-section p-0 d-flex align-items-stretch">
-            <div class="carousel slide w-100" data-bs-ride="carousel">
+            <div id="carouselExampleSlidesOnly" class="carousel slide w-100" data-bs-ride="carousel">
                 <div class="carousel-inner h-100">
                     <div class="carousel-item">
                         <img src="{% static 'images/pizza.png' %}" class="d-block w-100 h-100"
@@ -39,19 +39,19 @@
 <div class="container-fluid p-0 welcome">
     <div class="row justify-content-center g-0 align-items-stretch">
         <div class="col-11 col-md-7 left-section p-0 d-flex align-items-stretch">
-            <div class="carousel slide w-100" data-bs-ride="carousel">
+            <div id="carouselExampleSlidesOnly1" class="carousel slide w-100" data-bs-ride="carousel">
                 <div class="carousel-inner h-100">
                     <div class="carousel-item active">
                         <img src="{% static 'images/alm.png' %}" class="d-block w-100 h-100"
-                            alt="a picture of a cup of coffee">
+                            alt="a picture of a cup of alm">
                     </div>
                     <div class="carousel-item">
                         <img src="{% static 'images/river.png' %}" class="d-block w-100 h-100"
-                            alt="the view of our garden">
+                            alt="the river">
                     </div>
                     <div class="carousel-item">
                         <img src="{% static 'images/cow.png' %}" class="d-block w-100 h-100"
-                            alt="our home made pizza">
+                            alt="beautifull cow">
                     </div>
                 </div>
             </div>
@@ -71,9 +71,9 @@
 <div class="container-fluid p-0 welcome">
     <div class="row justify-content-center g-0 align-items-stretch">
         <div class="col-11 col-md-5 left-section p-0 m-0 d-flex flex-column align-items-stretch">
-            <div class="opening-hours m-0 d-flex flex-column justify-content-between h-100">
+            <div class="opening-hours m-0 ">
                 <h4 class="text-center display-6">Opening Hours</h4>
-                <ul class="list-unstyled opening-hours-list d-flex flex-column justify-content-center h-100">
+                <ul class="list-unstyled opening-hours-list">
                     {% for time in opening_hours %}
                     <li>
                         <strong>{{ time.get_day_of_week_display }}:</strong> {{ time.open_time|date:"H:i" }} :
@@ -87,11 +87,11 @@
             </div>           
         </div>
         <div class="col-11 col-md-7 right-section p-0 d-flex align-items-stretch">
-            <div class="carousel slide w-100" data-bs-ride="carousel">
+            <div id="carouselExampleSlidesOnly2" class="carousel slide w-100" data-bs-ride="carousel">
                 <div class="carousel-inner h-100">
                     <div class="carousel-item active">
                         <img src="{% static 'images/opening-hours1.jpg' %}" class="d-block w-100 h-100"
-                            alt="a picture of a cococ clock">
+                            alt="a picture of a coocooc clock">
                     </div>                    
                 </div>
             </div>

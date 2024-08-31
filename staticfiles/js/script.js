@@ -27,3 +27,42 @@ window.addEventListener('DOMContentLoaded', () => {
         scrollPos = currentTop;
     });
 })
+
+document.addEventListener('DOMContentLoaded', function() {
+    flatpickr("#id_date", {
+        dateFormat: "d.m.Y",
+        minDate: "today"
+    });
+    flatpickr("#id_time", {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr:true,
+        minTime: "15:00",
+        maxTime: "20:00"
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Eventlistener to cancle buttons
+    document.querySelectorAll('.cancel-btn').forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            var reservationId = this.getAttribute('data-reservation-id');
+            var reservationDate = this.getAttribute('data-reservation-date');
+            var reservationTime = this.getAttribute('data-reservation-time');
+
+            // Update modal content
+            document.getElementById('reservationDate').textContent = reservationDate;
+            document.getElementById('reservationTime').textContent = reservationTime;
+
+            // Update confirm cancel link
+            var confirmCancelLink = document.getElementById('confirmCancelLink');
+            confirmCancelLink.href = "/cancel_reservation/" + reservationId + "/";
+
+            //Show the modal
+            var cancelModal = new bootstrap.Modal(document.getElementById('cancelConfirmationModal'));
+            cancelModal.show();
+        });
+    });
+
+});
