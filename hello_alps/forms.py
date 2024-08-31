@@ -91,20 +91,20 @@ class UserReservationForm(forms.ModelForm):
 
 class GuestReservationForm(forms.ModelForm):
     date = forms.DateField(
-        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}, format='%Y-%m-%d'),
-        input_formats=['%d.%m.%Y', '%d-%m-%Y', '%Y-%m-%d']  
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control', 'id': 'date'}, format='%Y-%m-%d'),
+        input_formats=['%Y-%m-%d']  #'%d.%m.%Y', '%d-%m-%Y',
     )
-    first_name = forms.CharField(max_length=25, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    last_name = forms.CharField(max_length=25, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
-    phone_number = forms.CharField(max_length=15, required=True, widget=forms.TextInput(attrs={'class': 'form-control'}))
+    first_name = forms.CharField(max_length=25, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'given-name'}))
+    last_name = forms.CharField(max_length=25, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'family-name'}))
+    phone_number = forms.CharField(max_length=15, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'tel'}))
 
     class Meta:
         model = UserReservation
         fields = ['first_name', 'last_name', 'phone_number', 'date', 'time', 'table']
         widgets = {
-            'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}, format='%Y-%m-%d'),
-            'time': forms.TimeInput(attrs={'type': 'time', 'class': 'form-control'}),
-            'table': forms.Select(attrs={'class': 'form-control'}),
+            'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control', 'id': 'date'}, format='%Y-%m-%d'),
+            'time': forms.TimeInput(attrs={'type': 'time', 'class': 'form-control', 'autocomplete': 'off', 'id': 'time'}),
+            'table': forms.Select(attrs={'class': 'form-control', 'autocomplete': 'off'}),
         }
             
     def __init__(self, *args, **kwargs):
