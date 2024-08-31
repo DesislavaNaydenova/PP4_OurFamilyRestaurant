@@ -7,7 +7,8 @@ from django.core.exceptions import ValidationError
 
 
 class FormCreation(UserCreationForm):
-    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    email = forms.EmailField(required=True, widget=forms.EmailInput
+                             (attrs={'class': 'form-control'}))
 
     class Meta:
         model = User
@@ -22,17 +23,18 @@ class FormCreation(UserCreationForm):
 
 class UserReservationForm(forms.ModelForm):
     date = forms.DateField(
-        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control', 'id': 'date'}, format='%Y-%m-%d'),
-        input_formats=['%d.%m.%Y', '%d-%m-%Y', '%Y-%m-%d']  
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control',
+                                      'id': 'date'}, format='%Y-%m-%d'),
+        input_formats=['%d.%m.%Y', '%d-%m-%Y', '%Y-%m-%d']
     )
-    
+
     class Meta:
         model = UserReservation
         fields = ['date', 'time', 'table', 'comment']
         widgets = {
             'time': forms.TimeInput(attrs={'type': 'time', 'id': 'time'}),
         }
-        
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -46,7 +48,8 @@ class UserReservationForm(forms.ModelForm):
         day_of_week = selected_date.strftime('%A')
         # Retrive opening hours for given day
         opening_hours = OpeningHour.objects.filter(day_of_week=day_of_week)
-        # If no opening hours are available for the selected day, return an empty list
+        # If no opening hours are available for the selected day,
+        # return an empty list
         if not opening_hours.exists():
             return []
 
@@ -57,9 +60,13 @@ class UserReservationForm(forms.ModelForm):
             end_time = hour.close_time
             while start_time < end_time:
                 # Check if table is availablefor the entire day
-                if not UserReservation.objects.filter(date=selected_date, table=self.cleaned_data.get('table')).exists():
-                    time_choices.append((start_time.strftime('%H:%M'), start_time.strftime('%H:%M')))
-                start_time = (datetime.combine(datetime.today(), start_time) + timedelta(minutes=30)).time()
+                if not UserReservation.objects.filter(date=selected_date,
+                                                      table=self.cleaned_data.
+                                                      get('table')).exists():
+                    time_choices.append((start_time.strftime('%H:%M'),
+                                        start_time.strftime('%H:%M')))
+                start_time = (datetime.combine(datetime.today(), start_time) +
+                              timedelta(minutes=30)).time()
 
         return time_choices
 
@@ -67,9 +74,9 @@ class UserReservationForm(forms.ModelForm):
         date = self.cleaned_data['date']
         day_of_week = date.strftime('%A')
         opening_hours = OpeningHour.objects.filter(day_of_week=day_of_week)
-        
+
         if not opening_hours.exists():
-            raise ValidationError(f'Our restaurant is closed on {day_of_week}s.')
+            raise ValidationError(f'Our restaurant is closed on{day_of_week}s.')
 
         return date
 
@@ -92,22 +99,39 @@ class UserReservationForm(forms.ModelForm):
 
 class GuestReservationForm(forms.ModelForm):
     date = forms.DateField(
-        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control', 'id': 'date'}, format='%Y-%m-%d'),
-        input_formats=['%Y-%m-%d']  #'%d.%m.%Y', '%d-%m-%Y',
+        widget=forms.DateInput(attrs={'type': 'date', 'class': 'form-control',
+                                      'id': 'date'}, format='%Y-%m-%d'),
+        input_formats=['%Y-%m-%d']
     )
-    first_name = forms.CharField(max_length=25, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'given-name'}))
-    last_name = forms.CharField(max_length=25, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'family-name'}))
-    phone_number = forms.CharField(max_length=15, required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'tel'}))
+    first_name = forms.CharField(max_length=25, required=True,
+                                 widget=forms.TextInput
+                                 (attrs={'class': 'form-control',
+                                  'autocomplete': 'given-name'}))
+    last_name = forms.CharField(max_length=25, required=True,
+                                widget=forms.TextInput(attrs={
+                                    'class': 'form-control',
+                                    'autocomplete': 'family-name'}))
+    phone_number = forms.CharField(max_length=15, required=True,
+                                   widget=forms.TextInput(attrs={
+                                       'class': 'form-control',
+                                       'autocomplete': 'tel'}))
 
     class Meta:
         model = UserReservation
-        fields = ['first_name', 'last_name', 'phone_number', 'date', 'time', 'table']
+        fields = ['first_name', 'last_name', 'phone_number', 'date',
+                  'time', 'table']
         widgets = {
-            'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control', 'id': 'date'}, format='%Y-%m-%d'),
-            'time': forms.TimeInput(attrs={'type': 'time', 'class': 'form-control', 'autocomplete': 'off', 'id': 'time'}),
-            'table': forms.Select(attrs={'class': 'form-control', 'autocomplete': 'off'}),
+            'date': forms.DateInput(attrs={'type': 'date',
+                                           'class': 'form-control',
+                                           'id': 'date'}, format='%Y-%m-%d'),
+            'time': forms.TimeInput(attrs={'type': 'time',
+                                           'class': 'form-control',
+                                           'autocomplete': 'off',
+                                           'id': 'time'}),
+            'table': forms.Select(attrs={'class': 'form-control',
+                                         'autocomplete': 'off'}),
         }
-            
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -121,7 +145,8 @@ class GuestReservationForm(forms.ModelForm):
         day_of_week = selected_date.strftime('%A')
         # Retrive opening hours for given day
         opening_hours = OpeningHour.objects.filter(day_of_week=day_of_week)
-        # If no opening hours are available for the selected day, return an empty list
+        # If no opening hours are available for the selected day,
+        # return an empty list
         if not opening_hours.exists():
             return []
 
@@ -132,14 +157,19 @@ class GuestReservationForm(forms.ModelForm):
             end_time = hour.close_time
             while start_time < end_time:
                 # Check if table is availablefor the entire day
-                if not UserReservation.objects.filter(date=selected_date, table=self.cleaned_data.get('table')).exists():
-                    time_choices.append((start_time.strftime('%H:%M'), start_time.strftime('%H:%M')))
-                start_time = (datetime.combine(datetime.today(), start_time) + timedelta(minutes=30)).time()
+                if not UserReservation.objects.filter(date=selected_date,
+                                                      table=self.cleaned_data.
+                                                      get('table')).exists():
+                    time_choices.append((start_time.strftime('%H:%M'),
+                                         start_time.strftime('%H:%M')))
+                start_time = (datetime.combine(datetime.today(), start_time) +
+                              timedelta(minutes=30)).time()
 
         return time_choices
 
     def clean_table(self):
-        # Same logic as in UserReservationForm but without conflict with the user's own reservations.
+        # Same logic as in UserReservationForm but without
+        # conflict with the user's own reservations.
         table = self.cleaned_data.get('table')
         date = self.cleaned_data.get('date')
         time = self.cleaned_data.get('time')

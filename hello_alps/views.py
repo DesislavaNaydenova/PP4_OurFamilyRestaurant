@@ -30,7 +30,8 @@ def index(request):
         output_field=IntegerField(),
     )
     opening_hours = OpeningHour.objects.annotate(day_order=ordering).order_by('day_order')
-    return render(request, 'hello_alps/index.html', {'opening_hours': opening_hours})
+    return render(request,
+                  'hello_alps/index.html', {'opening_hours': opening_hours})
 
 
 # Menu List View
@@ -40,16 +41,10 @@ class MenuList(generic.ListView):
 
     def get_queryset(self):
         ordered_categories = ['starters', 'maindishes', 'pizza', 'desserts']
-        sort_menu_items = {category: Menu.objects.filter(categories=category) for category in ordered_categories}
+        sort_menu_items = {category: Menu.objects.filter(categories=category)
+                           for category in ordered_categories}
         return sort_menu_items
 
-
-# Added to index
-# Opening Hours View
-#def OpeningHours(request):
-#    opening_hours = OpeningHour.objects.all()
-#  return render(request, 'hello_alps/index.html', {'opening_hours': opening_hours})
- 
 
 # Reservations.html View
 def reservations(request):
@@ -69,8 +64,9 @@ def guest_reservation(request):
 
             return redirect('guest_reservation')
         else:
-            return render(request, 'hello_alps/guest_reservation.html', {'form':form})
-            
+            return render(request,
+                          'hello_alps/guest_reservation.html', {'form': form})
+
     else:
         form = GuestReservationForm()
 
@@ -104,18 +100,19 @@ def user_reservation(request):
         form = UserReservationForm(post_data)
 
         if form.is_valid():
-            reservation = form.save(commit= False)
+            reservation = form.save(commit=False)
             reservation.user = request.user
-            reservation.save()            
-            
+            reservation.save()
+
             request.session['reservation_success'] = True
             request.session['reservation_date'] = reservation.date.strftime('%Y.%m.%d')
             request.session['reservation_time'] = reservation.time.strftime('%H:%M')
 
             return redirect('user_reservations')
         else:
-            return render(request, 'hello_alps/user_reservation.html', {'form':form})
-            
+            return render(request,
+                          'hello_alps/user_reservation.html', {'form': form})
+
     else:
         form = UserReservationForm()
 
@@ -127,14 +124,15 @@ def user_reservation(request):
                 messages.error(request, "Invalida date format.")
 
     return render(request, 'hello_alps/user_reservation.html', {'form': form})
-    
+
 
 # Reservation management
 @login_required
 def user_reservations(request):
-    reservations = UserReservation.objects.filter(user=request.user, date__gte=datetime.today()).order_by('date')
+    reservations = UserReservation.objects.filter(user=request.user,
+                                                  date__gte=datetime.today()).order_by('date')
 
-     #Retrieve session flags
+    # Retrieve session flags
     reservation_success = request.session.pop('reservation_success', False)
     edit_success = request.session.pop('edit_success', False)
     reservation_date = request.session.pop('reservation_date', None)
@@ -149,14 +147,14 @@ def user_reservations(request):
         'edit_success': edit_success,
         'cancel_warning': cancel_warning,
         })
-    
+
 
 # Edit reservation View
 @login_required
 def edit_reservation(request, reservation_id):
     reservation = get_object_or_404(UserReservation, id=reservation_id, user=request.user)
 
-    if request.method =='POST':
+    if request.method == 'POST':
         form = UserReservationForm(request.POST, instance=reservation)
         if form.is_valid():
             updated_reservation = form.save()
@@ -176,7 +174,8 @@ def edit_reservation(request, reservation_id):
 # Cancel reservation View
 @login_required
 def cancel_reservation(request, reservation_id):
-    reservation = get_object_or_404(UserReservation, id= reservation_id, user = request.user)
+    reservation = get_object_or_404(UserReservation,
+                                    id=reservation_id, user=request.user)
     reservation.delete()
     request.session['cancel_warning'] = True
     return redirect('user_reservations')
@@ -202,6 +201,7 @@ def register(request):
     else:
         form = FormCreation()
     return render(request, 'hello_alps/register.html', {'form': form})
+
 
 # About View
 def about_me(request):

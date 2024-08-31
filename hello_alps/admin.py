@@ -8,10 +8,11 @@ import bleach
 
 class MenuAdmin(SummernoteModelAdmin):
     summernote_fields = ("name",)
+
     def name_preview(self, obj):
         return bleach.clean(obj.name, tags=[], strip=True)
     name_preview.short_name = "name (preview)"
-    list_display = ("name_preview","description", "price",)
+    list_display = ("name_preview", "description", "price",)
     list_filter = ("categories",)
     search_fields = ("name", "categories")
 
@@ -28,7 +29,8 @@ admin.site.register(OpeningHour, OpeningHourAdmin)
 
 
 class TableAdmin(admin.ModelAdmin):
-    list_display = ("table_number", "capacity", "status", "get_reservation_dates")
+    list_display = ("table_number", "capacity", "status",
+                    "get_reservation_dates")
     list_filter = ("status", "capacity",)
     search_fields = ("table_number",)
 

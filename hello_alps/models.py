@@ -27,7 +27,7 @@ class Menu(models.Model):
 
 class OpeningHour(models.Model):
     """ Manages the opening hours """
-    day_of_week = models.CharField( choices=[
+    day_of_week = models.CharField(choices=[
         ('Monday', 'Monday'),
         ('Tuesday', 'Tuesday'),
         ('Wednesday', 'Wednesday'),
@@ -51,10 +51,10 @@ class OpeningHour(models.Model):
 class Table(models.Model):
     table_number = models.PositiveIntegerField()
     capacity = models.PositiveIntegerField()
-    status = models.CharField(choices= [
+    status = models.CharField(choices=[
         ('available', 'Available'),
         ('reserved', 'Reserved'),
-    ], default= 'available')
+    ], default='available')
 
     class Meta:
         ordering = ['table_number']
@@ -64,11 +64,13 @@ class Table(models.Model):
 
 
 class UserReservation(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE, null=True, blank=True)
     table = models.ForeignKey('Table', on_delete=models.SET_NULL, null=True)
     date = models.DateField(default=timezone.now)
-    opening_hour = models.ForeignKey('OpeningHour', on_delete=models.SET_NULL, null=True)
-    time =models.TimeField()
+    opening_hour = models.ForeignKey('OpeningHour', on_delete=models.SET_NULL,
+                                     null=True)
+    time = models.TimeField()
     comment = models.TextField(blank=True, max_length=1000)
 
     class Meta:
@@ -78,7 +80,7 @@ class UserReservation(models.Model):
 
     def __str__(self):
         table_info = f"Table {self.table.table_number} (Capacity {self.table.capacity})" if self.table else "No table asigned"
-        return f"{self.date} - {self.time} - {table_info}" #Table {self.table.number} (Capacity {self.table.capacity})"
+        return f"{self.date} - {self.time} - {table_info}"
 
 
 @receiver(post_save, sender=UserReservation)
@@ -92,7 +94,9 @@ def update_table_status(sender, instance, **kwargs):
 @receiver(post_save, sender=UserReservation)
 def update_table_status_on_delete(sender, instance, **kwargs):
     if kwargs.get('created', False):
-        reserved_tables = UserReservation.objects.filter(table=instance.table, date=instance.date, time=instance.time).exists()
+        reserved_tables = UserReservation.objects.filter(table=instance.table,
+                                                         date=instance.date,
+                                                         time=instance.time).exists()
         if not reserved_tables:
             instance.table.status = 'Available'
             instance.table.save()

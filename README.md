@@ -75,7 +75,7 @@ If you want to add optional [shields.io](https://shields.io) badges to your READ
   * [AUTOMATED TESTING](#automated-testing)
     * [W3C Validator](#w3c-validator)
     * [JavaScript Validator](#javascript-validator)
-    * [Python Validator](#python-validator)
+    * [PEP8 Validator](#pep8-validator)
     * [Lighthouse](#lighthouse)
     * [WAVE Testing](#wave-testing)
   * [MANUAL TESTING](#manual-testing)
@@ -356,6 +356,9 @@ Follow any additional setup instructions provided in the repository’s README.m
 * [Login Page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbookworm2022.herokuapp.com%2Flogin) - No errors or warnings.
 * [Profile Page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbookworm2022.herokuapp.com%2Fprofile%3Fusername%3Dadmin) - No errors or warnings.
 
+#### PEP8 Validator
+
+* Checked all the python files with the PEP8 validator and applied the corrections, but didn't change the settings.py file and some error messages, because they were giving errors in my editor.
   
 Use this part of the README to link to your TESTING.md file - you can view the example TESTING.md file [here](milestone1-testing.md)
 
