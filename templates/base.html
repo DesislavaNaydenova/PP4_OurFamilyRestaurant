@@ -76,9 +76,10 @@
                     <div class="site-heading">
                         <h1>Our Family Restaurant</h1>
                         {% if user.is_authenticated %}
-                        <span class="subheading">Dear {{request.user}}, Welcome to</span>
+                        <span class="subheading">Dear {{request.user}}, Welcome to a culinary journey where flavors know no boundaries.</span>
+                        {% else %}
+                        <span class="subheading">Welcome to a culinary journey where flavors know no boundaries.</span>
                         {% endif %}
-                        <span class="subheading">Our Restaurant's Website</span>
                     </div>
                 </div>
             </div>

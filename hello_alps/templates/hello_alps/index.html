@@ -4,28 +4,31 @@
 
 <div class="container-fluid p-0 welcome">
     <div class="row justify-content-center g-0 align-items-stretch">
-        <div class="col-11 col-md-5 left-section p-0 d-flex flex-column">
+        <div class="col-11 col-md-5 left-section p-0 m-0 d-flex flex-column align-items-stretch">
             <div class="d-flex justify-content-center align-items-center text-center mx-auto my-4 p-3 flex-grow-1">
-                <h3 class="display-6">Feel free to taste the spirit of 2 continents, 3 countries and <strong>One
-                        Love!</strong></h3>
+                <h4 class="display-6">Immerse yourself in the vibrant essence of three continents with diverse cultures and the unifying embrace of One Love.</h4>
             </div>
             <div class="d-grid mb-2 p-0">
                 <a href="{% url 'menu_list' %}" class="btn btn-light btn-lg text-uppercase p-0 m-0">Menu</a>
             </div>
         </div>
-        <div class="col-11 col-md-7 right-section p-0 -flex align-items-stretch">
+        <div class="col-11 col-md-7 right-section p-0 d-flex align-items-stretch">
             <div id="carouselExampleSlidesOnly" class="carousel slide w-100" data-bs-ride="carousel">
                 <div class="carousel-inner h-100">
+                    <div class="carousel-item">
+                        <img src="{% static 'images/pizza.png' %}" class="d-block w-100 h-100"
+                            alt="our home made pizza">
+                    </div>
                     <div class="carousel-item active">
-                        <img src="{% static 'images/cofe.png' %}" class="d-block w-100 h-100"
+                        <img src="{% static 'images/garden.png' %}" class="d-block w-100 h-100"
                             alt="a picture of a cup of coffee">
                     </div>
                     <div class="carousel-item">
-                        <img src="{% static 'images/garden.png' %}" class="d-block w-100 h-100"
+                        <img src="{% static 'images/pizza3.png' %}" class="d-block w-100 h-100"
                             alt="the view of our garden">
                     </div>
                     <div class="carousel-item">
-                        <img src="{% static 'images/pizza.png' %}" class="d-block w-100 h-100"
+                        <img src="{% static 'images/cofe.png' %}" class="d-block w-100 h-100"
                             alt="our home made pizza">
                     </div>
                 </div>
@@ -33,52 +36,70 @@
         </div>
     </div>
 </div>
-<div class="container-fluid p-0 ">
+<div class="container-fluid p-0 welcome">
     <div class="row justify-content-center g-0 align-items-stretch">
-        <div class="col-11 col-md-7 left-section p-0 -flex align-items-stretch">
+        <div class="col-11 col-md-7 left-section p-0 d-flex align-items-stretch">
             <div id="carouselExampleSlidesOnly" class="carousel slide w-100" data-bs-ride="carousel">
                 <div class="carousel-inner h-100">
                     <div class="carousel-item active">
-                        <img src="{% static 'images/cofe.png' %}" class="d-block w-100 h-100"
+                        <img src="{% static 'images/alm.png' %}" class="d-block w-100 h-100"
                             alt="a picture of a cup of coffee">
                     </div>
                     <div class="carousel-item">
-                        <img src="{% static 'images/garden.png' %}" class="d-block w-100 h-100"
+                        <img src="{% static 'images/river.png' %}" class="d-block w-100 h-100"
                             alt="the view of our garden">
                     </div>
                     <div class="carousel-item">
-                        <img src="{% static 'images/pizza.png' %}" class="d-block w-100 h-100"
+                        <img src="{% static 'images/cow.png' %}" class="d-block w-100 h-100"
                             alt="our home made pizza">
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-11 col-md-5 right-section p-0 welcome d-flex flex-column">
-            <div class="d-flex justify-content-center align-items-center text-center mx-auto my-4 p-3 flex-grow-1">
-                <h3 class="display-6">Feel free to taste the spirit of 2 continents, 3 countries and 
-                    <strong>One Love!</strong></h3>
+        <div class="col-11 col-md-5 right-section p-0 m-0 d-flex flex-column align-items-stretch">
+            <div class="d-flex justify-content-center align-items-center text-center mx-auto m-0 p-3 flex-grow-1">
+                <h4 class="display-6">Nestled in the picturesque Alpbachtal Valley in Tirol, our restaurant offers a unique dining experience with breathtaking alpine scenery.</h4>
             </div>
-            <div class="d-grid mb-2 p-0">
-                <a href="{% url 'menu_list' %}" class="btn btn-light btn-lg text-uppercase p-0 m-0">Menu</a>
+            <div class="d-grid m-0 p-0">
+                <a href="{% url 'contact' %}" class="btn btn-light btn-lg text-uppercase p-0 m-0">Contact</a>
             </div>
         </div>        
     </div>
 </div>
 
 <!-- Opening Hours Section -->
-<div class="opening-hours mt-5">
-    <h2 class="text-center display-5">Opening Hours</h2>
-    <ul class="list-unstyled opening-hours-list">
-        {% for time in opening_hours %}
-        <li>
-            <strong>{{ time.get_day_of_week_display }}:</strong> {{ time.open_time|date:"H:i" }} :
-            {{ time.close_time|date:"H:i" }}
-        </li>
-        {% endfor %}
-    </ul>
-    <hr>
-    <p class="text-center">Thank You for choosing our family restaurant!</p>
+<div class="container-fluid p-0 welcome">
+    <div class="row justify-content-center g-0 align-items-stretch">
+        <div class="col-11 col-md-5 left-section p-0 m-0 d-flex flex-column align-items-stretch">
+            <div class="opening-hours m-0 d-flex flex-column justify-content-between h-100">
+                <h4 class="text-center display-6">Opening Hours</h4>
+                <ul class="list-unstyled opening-hours-list d-flex flex-column justify-content-center h-100">
+                    {% for time in opening_hours %}
+                    <li>
+                        <strong>{{ time.get_day_of_week_display }}:</strong> {{ time.open_time|date:"H:i" }} :
+                        {{ time.close_time|date:"H:i" }}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div> 
+            <div class="d-grid m-0 p-0">
+                <a href="{% url 'user_reservation' %}" class="btn btn-light btn-lg text-uppercase p-0 m-0">Make a Reservation</a>
+            </div>           
+        </div>
+        <div class="col-11 col-md-7 right-section p-0 d-flex align-items-stretch">
+            <div id="carouselExampleSlidesOnly" class="carousel slide w-100" data-bs-ride="carousel">
+                <div class="carousel-inner h-100">
+                    <div class="carousel-item active">
+                        <img src="{% static 'images/opening-hours1.jpg' %}" class="d-block w-100 h-100"
+                            alt="a picture of a cococ clock">
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+<hr>
+<p class="text-center">Thank You for choosing our family restaurant!</p>
 
-            <!-- index.html content ends here -->
-            {% endblock %}
+<!-- index.html content ends here -->
+{% endblock %}

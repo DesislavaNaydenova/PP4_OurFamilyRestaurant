@@ -455,7 +455,11 @@ The Credits section is where you can credit all the people and sources you used 
 ###  Media
 
 - The images and media used on this website are inspired by the original [Heisthof webpage](https://www.heisthof.net/). We have obtained permission from the owner to use and adapt this content. We extend our gratitude to the Heisthof team for allowing us to showcase their beautiful visuals and atmosphere through our website.
+
 - For the family photo: [FreePik](https://www.freepik.com/)
+
+- Photos from the Alps: [Unsplash](https://unsplash.com)
+
 
   
 ###  Acknowledgments
