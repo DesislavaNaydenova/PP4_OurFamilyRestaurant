@@ -94,7 +94,7 @@ def user_reservation(request):
         date_str = post_data.get('date')
 
         if date_str:
-            formatted_date = datetime.strptime(date_str, '%d.%m.%Y').strftime('%Y-%m-%d')
+            formatted_date = datetime.strptime(date_str, '%Y-%m-%d').strftime('%Y-%m-%d')
             post_data['date'] = formatted_date
 
         if 'reservation_id' in request.POST:
