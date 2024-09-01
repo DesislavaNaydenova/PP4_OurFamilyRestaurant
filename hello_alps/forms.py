@@ -60,13 +60,9 @@ class UserReservationForm(forms.ModelForm):
             end_time = hour.close_time
             while start_time < end_time:
                 # Check if table is availablefor the entire day
-                if not UserReservation.objects.filter(date=selected_date,
-                                                      table=self.cleaned_data.
-                                                      get('table')).exists():
-                    time_choices.append((start_time.strftime('%H:%M'),
-                                        start_time.strftime('%H:%M')))
-                start_time = (datetime.combine(datetime.today(), start_time) +
-                              timedelta(minutes=30)).time()
+                if not UserReservation.objects.filter(date=selected_date, table=self.cleaned_data.get('table')).exists():
+                    time_choices.append((start_time.strftime('%H:%M'), start_time.strftime('%H:%M')))
+                    start_time = (datetime.combine(datetime.today(), start_time) + timedelta(minutes=30)).time()
 
         return time_choices
 
@@ -79,6 +75,22 @@ class UserReservationForm(forms.ModelForm):
             raise ValidationError(f'Our restaurant is closed on{day_of_week}s.')
 
         return date
+
+    def clean_time(self):
+        time = self.cleaned_data['time']
+        date = self.cleaned_data['date']
+        day_of_week = date.strftime('%A')
+        opening_hours = OpeningHour.objects.filter(day_of_week=day_of_week)
+
+        if not opening_hours.exists():
+            raise ValidationError('Our restaurant is closed on this day.')
+
+        # Ensure the time is within opening hours
+        for hour in opening_hours:
+            if hour.open_time <= time <= hour.close_time:
+                return time
+
+        raise ValidationError('The selected time is outside of our opening hours. Please choose a different time.')
 
     def clean_table(self):
         table = self.cleaned_data.get('table')
@@ -145,8 +157,7 @@ class GuestReservationForm(forms.ModelForm):
         day_of_week = selected_date.strftime('%A')
         # Retrive opening hours for given day
         opening_hours = OpeningHour.objects.filter(day_of_week=day_of_week)
-        # If no opening hours are available for the selected day,
-        # return an empty list
+        # If no opening hours are available for the selected day, return an empty list
         if not opening_hours.exists():
             return []
 
@@ -166,6 +177,22 @@ class GuestReservationForm(forms.ModelForm):
                               timedelta(minutes=30)).time()
 
         return time_choices
+
+    def clean_time(self):
+        time = self.cleaned_data['time']
+        date = self.cleaned_data['date']
+        day_of_week = date.strftime('%A')
+        opening_hours = OpeningHour.objects.filter(day_of_week=day_of_week)
+
+        if not opening_hours.exists():
+            raise ValidationError('Our restaurant is closed on this day.')
+
+        # Ensure the time is within opening hours
+        for hour in opening_hours:
+            if hour.open_time <= time <= hour.close_time:
+                return time
+
+        raise ValidationError('The selected time is outside of our opening hours. Please choose a different time.')
 
     def clean_table(self):
         # Same logic as in UserReservationForm but without
