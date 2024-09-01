@@ -168,15 +168,21 @@ class GuestReservationForm(forms.ModelForm):
             end_time = hour.close_time
             while start_time < end_time:
                 # Check if table is availablefor the entire day
-                if not UserReservation.objects.filter(date=selected_date,
-                                                      table=self.cleaned_data.
-                                                      get('table')).exists():
-                    time_choices.append((start_time.strftime('%H:%M'),
-                                         start_time.strftime('%H:%M')))
-                start_time = (datetime.combine(datetime.today(), start_time) +
-                              timedelta(minutes=30)).time()
+                if not UserReservation.objects.filter(date=selected_date, table=self.cleaned_data.get('table')).exists():
+                    time_choices.append((start_time.strftime('%H:%M'), start_time.strftime('%H:%M')))
+                    start_time = (datetime.combine(datetime.today(), start_time) + timedelta(minutes=30)).time()
 
         return time_choices
+
+    def clean_date(self):
+        date = self.cleaned_data['date']
+        day_of_week = date.strftime('%A')
+        opening_hours = OpeningHour.objects.filter(day_of_week=day_of_week)
+
+        if not opening_hours.exists():
+            raise ValidationError(f'Our restaurant is closed on{day_of_week}s.')
+
+        return date
 
     def clean_time(self):
         time = self.cleaned_data['time']
