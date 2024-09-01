@@ -5528,6 +5528,7 @@ textarea.form-control-lg {
 
 .carousel-inner {
   position: relative;
+  height: 100%;
   width: 100%;
   overflow: hidden;
 }
@@ -10818,4 +10819,18 @@ div#map {
 
 .welcome {
   margin-bottom: 3rem;
+}
+
+.opening-hours, #carouselExampleSlidesOnly2 {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.left-section, .right-section {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center; /* Optional: Align content vertically */
 }
