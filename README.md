@@ -459,12 +459,25 @@ Follow any additional setup instructions provided in the repository’s README.m
   
 #### JavaScript Validator
 
-* 
-    * [Lighthouse](#lighthouse)
-    * [WAVE Testing](#wave-testing)
-  * [MANUAL TESTING](#manual-testing)
-    * [Testing User Stories](#testing-user-stories)
-    * [Full Testing](#full-testing)
+* No errors or warnings. 
+
+#### Lighthouse
+
+![Lighthouuse Testing](assets/images/lighthouse.png)
+
+#### WAVE Testing
+
+![Wave Testing](assets/images/wave.png)
+
+### MANUAL TESTING
+
+#### Testing User Stories
+
+* Each user story was tested, all the issues were addressed and any features planned for future development were noted.
+
+#### Full Testing
+
+* The full manual testing process involved systematically verifying each feature to ensure it performed as expected across different devices and browsers. Every user interaction was tested thoroughly, with detailed documentation of any bugs or issues encountered, all of which were resolved or noted for future development.
 
 ## Bugs
 
