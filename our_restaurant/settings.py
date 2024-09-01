@@ -42,7 +42,7 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 SECRET_KEY = 'django-insecure-0nia25fax0r5kx^=l4lvg%^$98^mz2x2t0!_l^=22d27r*9%t6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['8000-desislavana-pp4ourfamil-u5mrbd5gf6j.ws-eu115.gitpod.io',
 '.herokuapp.com', '8000-desislavana-pp4ourfamil-48q6cuji0sv.ws.codeinstitute-ide.net']
