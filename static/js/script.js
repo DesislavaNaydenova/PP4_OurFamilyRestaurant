@@ -26,7 +26,7 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         scrollPos = currentTop;
     });
-})
+});
 
 document.addEventListener('DOMContentLoaded', function() {
     flatpickr("#id_date", {

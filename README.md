@@ -8,6 +8,7 @@ The Our Family Restaurant website is designed to provide a comprehensive and use
 1. Online Reservations:
 
   * Guest Reservations: Allow customers to make reservations directly from the website. Users can select their preferred date, time, and table without needing to call the restaurant. The system ensures table availability and prevents double-booking.
+    * Guest
   * Admin Reservations Management: Admins can view, edit, and manage reservations through a secure admin interface. This feature helps in tracking and organizing reservations efficiently.
 
 2. Dynamic Menu Management:
@@ -19,27 +20,31 @@ The Our Family Restaurant website is designed to provide a comprehensive and use
 
   * Opening Hours: Clearly display the restaurant’s operating hours for each day of the week.
   * Table Availability: Track and manage table status to ensure optimal seating arrangements and avoid conflicts.
+
 4. Customer Interaction:
 
   * Feedback and Comments: Guests can leave comments or special requests with their reservations. This feedback helps in personalizing their dining experience.
-  * Contact Information: Provides clear and accessible contact details, including a Google Maps integration for easy location.
+  * Contact Information: Provides clear and accessible contact details.
+
 5. Admin Dashboard:
 
   * Reservation Overview: Admins have a comprehensive view of all reservations, with options to filter by date, time, and table.
   * Table Status Management: Easily update table statuses to reflect current availability, making table management straightforward.
+
 6. Responsive Design:
 
   * The website is designed to be fully responsive, ensuring that it works seamlessly across different devices and screen sizes.
+
 ### Purpose
 The Our Family Restaurant website was created to modernize and enhance the dining experience by integrating convenient online features and efficient management tools. It simplifies the reservation process for customers, making it more accessible and less time-consuming. For restaurant staff, it provides an organized system for managing reservations, updating menus, and maintaining table availability, thereby improving overall operational efficiency.
 
 We hope that this website serves as a valuable resource for both our guests and our team, making every visit to Our Family Restaurant enjoyable and hassle-free.
 
-Add an image of the finished site here. I like to use [amiresponsive](https://ui.dev/amiresponsive) to get an image of my site on all device sizes, and amiresponsive allows you to click links on the page and scroll, so each device can show a different element of your site.
+![Am I Responsive?](assets/images/amIresponsive.png)
 
-Add a link to the live site here, for Milestone 1 this will be the GitHub Pages Link from when you deployed the site.
+You can see the deployed website [here]().
 
-If you want to add optional [shields.io](https://shields.io) badges to your README, I like to add them to this section.
+You can see the GitHub Repository [here](https://github.com/DesislavaNaydenova/PP4_OurFamilyRestaurant).
 
 ---
 
@@ -62,8 +67,11 @@ If you want to add optional [shields.io](https://shields.io) badges to your READ
   * [Entity-Relationship Diagram](#entity-relationship-diagram)
 
 * [Technologies Used](#technologies-used)
-  * [Languages Used](#languages-used)
-  * [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
+  * [Frontend Technologies](#frontend-technologies)
+  * [Backend Technologies](#backend-technologies)
+  * [Deployment and Hosting](#deployment-and-hosting)
+  * [Developmemnt Tools](#developmemnt-tools)
+  * [Additional Frameworks, Libraries & Programs Used](#additional-frameworks-libraries--programs-used)
 
 * [Deployment & Local Development](#deployment--local-development)
   * [Deployment](#deployment)
@@ -74,8 +82,8 @@ If you want to add optional [shields.io](https://shields.io) badges to your READ
 * [Testing](#testing)
   * [AUTOMATED TESTING](#automated-testing)
     * [W3C Validator](#w3c-validator)
-    * [JavaScript Validator](#javascript-validator)
     * [PEP8 Validator](#pep8-validator)
+    * [JavaScript Validator](#javascript-validator)
     * [Lighthouse](#lighthouse)
     * [WAVE Testing](#wave-testing)
   * [MANUAL TESTING](#manual-testing)
@@ -107,7 +115,7 @@ The user experience on the finished restaurant website should be intuitive, enga
 
 ### User Stories
 
-See our [GitHub User Stories](https://github.com/users/DesislavaNaydenova/projects/4/views/4)
+See our [GitHub User Stories](https://github.com/users/DesislavaNaydenova/projects/4/views/1)
 
 ## Design
 
@@ -115,16 +123,16 @@ The design of this project is crafted to ensure a modern, user-friendly, and vis
 
 ### Colour Scheme
 
-The color scheme for this project is inspired by the base palette provided by (Start Bootstrap)[https://startbootstrap.com/]
+The color scheme for this project is inspired by the base palette provided by [Start Bootstrap](https://startbootstrap.com/)
 
 ### Typography
 
-For this project, I used the typography base from (Start Bootstrap)[https://startbootstrap.com/]. Start Bootstrap provides a clean and modern design foundation, which includes a well-thought-out typographic system.
+For this project, I used the typography base from [Start Bootstrap](https://startbootstrap.com/). Start Bootstrap provides a clean and modern design foundation, which includes a well-thought-out typographic system.
 The project utilizes the font stack provided by Start Bootstrap, which includes popular web-safe fonts and Google Fonts. This ensures consistent and readable text across different devices and browsers.
 
 ### Imagery
 
-Use this section to explain what sort of imagery you plan to use through your site.
+The images used throughout this project are carefully selected to showcase both the culinary delights and the stunning natural surroundings that define our restaurant experience. Our aim is to not only tempt your taste buds with visually appealing dishes but also to immerse you in the beautiful environment in which we live and operate.
 
 ### Wireframes
 
@@ -138,15 +146,86 @@ Wireframes were created for mobile, tablet and desktop using balsamiq.
 
 ## Features
 
-👩🏻‍💻 View an example of a completed user experience section [here](https://github.com/kera-cudmore/TheQuizArms#Features)
+The website is comprised of a home page, a menu page, a reservation page, a log in page, a user reservation page, a guest reservation page, 404 error page and if the user is loged in as admin, he can easily go to the admin panel.
 
-This section can be used to explain what pages your site is made up of.
+All Pages on the website are responsive and have:
+
+- A favicon in the browser tab.
+
+![Favicon](assets/images/favicon.png)
+
+- A responsive navbar.
+
+![Navbar](assets/images/navbar.png)
+![Navbar](assets/images/navbar1.png)
+
+- A header.
+
+![Header](assets/images/header.png)
+
+- A footer.
+
+![Footer](assets/images/footer.png)
 
 ### General features on each page
 
-If there is a feature that appears on all pages of your site, include it here. Examples of what to include would the the navigation, a footer and a favicon.
+- Interactive homepage with sliding images, links to the menu, reservation and contact page also showing the opening hours.
 
-I then like to add a screenshot of each page of the site here, i use [amiresponsive](https://ui.dev/amiresponsive) which allows me to grab an image of the site as it would be displayed on mobile, tablet and desktop, this helps to show the responsiveness of the site.
+![Homepage](assets/images/homepage.png)
+
+- Menu page.
+
+![Menupage](assets/images/menu_page.png)
+
+- Log In, Register, Guest page.
+
+![Regester](assets/images/login_register.png)
+
+![Regester](assets/images/login_register1.png)
+
+- Reservation page.
+
+![Reservation](assets/images/reserv_gast.png)
+
+![Reservation](assets/images/reservation.png)
+
+- About page.
+
+![About](assets/images/about.png)
+
+- Contact page.
+
+![Contact](assets/images/contact.png)
+
+- If the user is loged in:
+
+![Loged in](assets/images/loged_in_menu_user.png)
+
+- If the admin is loged in:
+
+![Loged in](assets/images/loged_in_menu.png)
+
+- List of upcoming reservations with options for edit and cancel.
+
+![Upcoming](assets/images/upcoming.png)
+
+- Reservation confirmation modal.
+
+![Modal1](assets/images/reserv_conf_modal.png)
+
+- Reservation edit confirmation modal.
+
+![Modal2](assets/images/edit_modal.png)
+
+- Cancelation warning.
+
+![Warning](assets/images/cancel_warning.png)
+
+- Reservation cancel confirmation modal.
+
+![Modal3](assets/images/cancel_conf_modal.png)
+
+
 
 ### Future Implementations
 
@@ -161,6 +240,8 @@ I then like to add a screenshot of each page of the site here, i use [amirespons
 3. Surrounding Area Photos: To enhance the connection with the local area, the website features a gallery of photos depicting the surrounding environment. This includes scenic views and notable landmarks near the restaurant. 
 
 4. Menu Item Images: Each menu item on the restaurant’s website is enhanced with high-quality images. These images are displayed alongside the item descriptions to give customers a visual preview of the dishes. This feature improves the user experience by making the menu more engaging and helping customers make more informed choices.
+
+5. Guest Reservation Model: This model is planned to handle reservations for guests without user accounts.
 
 ## Database Schema
 
@@ -179,27 +260,36 @@ Below is the Entity-Relationship Diagram representing the database structure of 
 
 ## Technologies Used
 
-👩🏻‍💻 View an example of a completed Technologies Used section [here](https://github.com/kera-cudmore/Bully-Book-Club#Technologies-Used)
+### Frontend Technologies
 
-### Languages Used
+- HTML5: The standard markup language used for structuring content on the web.
+- CSS3: For styling and layout, providing a responsive and visually appealing design.
+- JavaScript: Used for enhancing interactivity and dynamic content on the website.
+- Bootstrap: A popular front-end framework for developing responsive and mobile-first websites.
 
-Make a note here of all the languages used in creating your project. For the first project this will most likely just be HTML & CSS.
+### Backend Technologies
 
-### Frameworks, Libraries & Programs Used
+- Django: A high-level Python web framework that enables rapid development of secure and maintainable websites. It handles the server-side logic and integrates with the database.
+- Python: The programming language used to build the backend logic of the application.
+- PostgreSQL:  An advanced relational database management system used for storing and managing data.
 
-- [DBDiagram](https://dbdiagram.io/) for the ERD.
+### Deployment and Hosting
 
-- [Balsamiq](https://balsamiq.com/) used to create wireframes.
+- Heroku: A cloud platform used for deploying and managing applications, providing scalable hosting solutions.
+- GitHub: A version control system for tracking changes and collaboration on the project's source code.
 
-- [GitHub](https://github.com/) saves and stores the files for the website.
+### Developmemnt Tools
 
-- [GitPod](https://gitpod.io/) IDE used to create the site.
+- GitPod: An online IDE that provides a development environment directly from your GitHub repository.
 
-- [Am I Responsive?](https://amiresponsive.co.uk/) shows the website image on a range of devices.
+### Additional Frameworks, Libraries & Programs Used
 
-- [StartBootstrap](https://startbootstrap.com/) for Bootstrap themes.
-
-- [Heroku](https://id.heroku.com/) fot developing the project.
+- Django Summernote: An extension for Django that provides a rich text editor for content management.
+- Psycopg2: A PostgreSQL adapter for Python, allowing Django to interact with the PostgreSQL database.
+- Bleach: A library used for sanitizing HTML input to ensure content safety and security.
+- Am I Responsive: A tool used to preview how the website looks on different devices and screen sizes.
+- Balsamiq: A wireframing tool used for designing the layout and structure of the website’s interface.
+- DBDiagram: A tool used for creating and visualizing database schemas, helping to design and understand the database structure.
 
 ## Deployment & Local Development
 
@@ -351,16 +441,30 @@ Follow any additional setup instructions provided in the repository’s README.m
 
 [W3C](https://validator.w3.org/) was used to validate the URL on all pages of the website. It was also used to validate the CSS. 
 
-* [Menu Page](https://pp4-our-family-restaurant-8fbc3211d08d.herokuapp.com/menu_list) - There is an error coming from the summernote editor, that I coldn't fix and addet to the unfixed bugs
-* [Edit reservation Page](https://pp4-our-family-restaurant-8fbc3211d08d.herokuapp.com/accounts/login/?next=/edit_reservation/45/) - There is a Warning about adding a lang attribute to the html start tag to declare the language of this document, but it exists in the base.html.
-* [Login Page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbookworm2022.herokuapp.com%2Flogin) - No errors or warnings.
-* [Profile Page](https://validator.w3.org/nu/?doc=https%3A%2F%2Fbookworm2022.herokuapp.com%2Fprofile%3Fusername%3Dadmin) - No errors or warnings.
+* [Homepage](https://pp4-our-family-restaurant-8fbc3211d08d.herokuapp.com/) - No errors or warnings. 
+* [Menu Page](https://pp4-our-family-restaurant-8fbc3211d08d.herokuapp.com/menu_list) - There is an error coming from the summernote editor, that I coldn't fix and addet to the unfixed bugs.
+* [Reservation page](https://pp4-our-family-restaurant-8fbc3211d08d.herokuapp.com/reservations/) - No errors or warnings. 
+* [Edit reservation Page](https://pp4-our-family-restaurant-8fbc3211d08d.herokuapp.com/accounts/login/?next=/edit_reservation/45/) - No errors or warnings.
+* [Login Page](https://pp4-our-family-restaurant-8fbc3211d08d.herokuapp.com/login/) - No errors or warnings.
+* [Make reservation Page](https://pp4-our-family-restaurant-8fbc3211d08d.herokuapp.com/user_reservation/) - Warning: Consider adding a lang attribute to the html start tag to declare the language of this document.
+* [User Reservations Page](https://pp4-our-family-restaurant-8fbc3211d08d.herokuapp.com/user_reservations/) - Warning: Consider adding a lang attribute to the html start tag to declare the language of this document.
+* [Edit Reservation Page](https://pp4-our-family-restaurant-8fbc3211d08d.herokuapp.com/edit_reservation/51/) - Warning: Consider adding a lang attribute to the html start tag to declare the language of this document.
+* [About Page](https://pp4-our-family-restaurant-8fbc3211d08d.herokuapp.com/about/) - No errors or warnings.
+* [Contact Page](https://pp4-our-family-restaurant-8fbc3211d08d.herokuapp.com/contact/) - No errors or warnings.
+* [Admin Panel](https://pp4-our-family-restaurant-8fbc3211d08d.herokuapp.com/admin/) - This is the built-in Django admin panel used for managing the website’s data and content. While it offers powerful features for administration, you might encounter some errors or warnings. Due to the nature of the built-in panel and its integration with the Django framework, these issues are inherent and cannot be easily fixed within the panel itself.
 
 #### PEP8 Validator
 
-* Checked all the python files with the PEP8 validator and applied the corrections, but didn't change the settings.py file and some error messages, because they were giving errors in my editor.
+* To ensure code quality and adherence to the PEP8 style guide, I used the [PEP8 validator](https://pep8ci.herokuapp.com/#). Most of the corrections recommended by the validator have been applied to the codebase. However, some issues, particularly those in the settings.py file, were not resolved due to compatibility errors with my editor. Despite this, the core functionality and structure of the project remain intact and well-organized.
   
-Use this part of the README to link to your TESTING.md file - you can view the example TESTING.md file [here](milestone1-testing.md)
+#### JavaScript Validator
+
+* 
+    * [Lighthouse](#lighthouse)
+    * [WAVE Testing](#wave-testing)
+  * [MANUAL TESTING](#manual-testing)
+    * [Testing User Stories](#testing-user-stories)
+    * [Full Testing](#full-testing)
 
 ## Bugs
 
@@ -430,11 +534,17 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 
 ![URL validation error 1](assets/images/url_validation_summernote_bug1.png)
 
-2. The user gets an error message after trying to submit the reservation.
+2. The user gets an error message after trying to submit the reservation, not before.
 
 ![Date Error Message](assets/images/closed_date_alert.png)
 
-- Due to lack of time we weren't able to change the code.
+- Due to lack of time I wasn't able to change the code.
+
+3. The guest reservations are displayed in the User Reservation table of the admin panel, without name.
+
+![Guest Reservation](assets/images/guest_reservation_bug.png)
+
+- I tried to create a gust reservation model and display the guest reservations separatly, but it didn't work correctly so due to lack of time I wasn't able to correct the code and because the reservations are displayed, so the main function is working, I left it as a future implementation.
 
 
 ## Credits
@@ -447,11 +557,6 @@ Use this part of the README to link to your TESTING.md file - you can view the e
 - For the FavIcon: [Icons8](https://icons8.com/)
 - For Map in the Contact template: [GoogleMaps](https://www.google.com/map)
 
-
-
-👩🏻‍💻 View an example of a completed Credits section [here](https://github.com/kera-cudmore/BookWorm#Credits)
-
-The Credits section is where you can credit all the people and sources you used throughout your project.
 
 ### Code Used
 
@@ -473,13 +578,14 @@ The Credits section is where you can credit all the people and sources you used 
 
 - Photos from the Alps: [Unsplash](https://unsplash.com)
 
-
   
 ###  Acknowledgments
 
 I'd like to thank:
 
 - CodeInstitute for their invaluable support and resources, which were crucial in developing this project.
+
+- [The Django Comunity](https://www.djangoproject.com/community/) for their invaluable support and guidance throughout this project. Their expertise and advice have been instrumental in shaping and refining this work.
 
 - My Code Institute Mentor Can Sucullu.
 
