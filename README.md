@@ -8,7 +8,6 @@ The Our Family Restaurant website is designed to provide a comprehensive and use
 1. Online Reservations:
 
   * Guest Reservations: Allow customers to make reservations directly from the website. Users can select their preferred date, time, and table without needing to call the restaurant. The system ensures table availability and prevents double-booking.
-    * Guest
   * Admin Reservations Management: Admins can view, edit, and manage reservations through a secure admin interface. This feature helps in tracking and organizing reservations efficiently.
 
 2. Dynamic Menu Management:
@@ -242,6 +241,8 @@ All Pages on the website are responsive and have:
 4. Menu Item Images: Each menu item on the restaurant’s website is enhanced with high-quality images. These images are displayed alongside the item descriptions to give customers a visual preview of the dishes. This feature improves the user experience by making the menu more engaging and helping customers make more informed choices.
 
 5. Guest Reservation Model: This model is planned to handle reservations for guests without user accounts.
+
+6. Add a Map to the contact page.
 
 ## Database Schema
 
@@ -558,6 +559,14 @@ Follow any additional setup instructions provided in the repository’s README.m
 ![Guest Reservation](assets/images/guest_reservation_bug.png)
 
 - I tried to create a gust reservation model and display the guest reservations separatly, but it didn't work correctly so due to lack of time I wasn't able to correct the code and because the reservations are displayed, so the main function is working, I left it as a future implementation.
+
+4. Had problem with the API key for GoogleMaps.
+
+![GoogleMaps Error msg](assets/images/google_maps1.png)
+
+![GoogleMaps Fail](assets/images/google_maps2.png)
+
+- Decided to leave the Map as a future implementation.
 
 
 ## Credits
