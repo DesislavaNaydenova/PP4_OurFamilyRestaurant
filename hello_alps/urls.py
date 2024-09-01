@@ -23,5 +23,4 @@ urlpatterns = [
     path('cancel_reservation/<int:reservation_id>/', views.cancel_reservation,
          name='cancel_reservation'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
-    path('admin/', admin.site.urls, name='admin:index'),
 ]
