@@ -53,6 +53,9 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                           <li><a class="dropdown-item nav-link" href="{% url 'user_reservation' %}">Make a Reservation</a></li>
                           <li><a class="dropdown-item nav-link" href="{% url 'user_reservations' %}">Upcoming Reservations</a></li>
+                          {% if user.is_superuser %}
+                          <li><a class="dropdown-item nav-link" href="{% url 'admin:index' %}">Admin Panel</a></li>
+                          {% endif %}
                           <li><hr class="dropdown-divider"></li>
                           <li>
                             <form action="{% url 'logout' %}" method="post">
